@@ -2,10 +2,8 @@
 <ng-container *ngIf=pokeItems>
 <div class='container' *ngFor='let item of pokeItems | paginate: {itemsPerPage:page, currentPage:p}'
  title = '{{item.name | titlecase }} details'>
-
 <h2>{{item.name | uppercase }}</h2> 
 <app-item-sprite [itemUrl]='item.url'></app-item-sprite>
-
 </div>
 </ng-container>
 <div class="footer">

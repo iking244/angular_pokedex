@@ -1,3 +1,25 @@
+*{
+    box-sizing: border-box;
+}
 img{
     height:40px;
 }
+.text-container{
+    font-size:24px;
+    height:100%;
+   
+    
+}
+
+@media only screen and (min-width: 600px){
+ 
+    .text-container{
+        font-size:14px;
+        display: inline-block;
+        height:120px;
+        overflow:hidden;
+        
+    }
+
+  }
+  
