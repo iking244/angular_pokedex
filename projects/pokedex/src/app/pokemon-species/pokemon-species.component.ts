@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
-import { SpriteUrls, PokemonDetails, PokemonTypes } from '../_models/pokemon';
+import { SpriteUrls, PokemonDetails, PokemonTypes, PokemonSpecies } from '../_models/pokemon';
 import { switchMap } from 'rxjs/operators';
 
 
@@ -26,10 +26,10 @@ export class PokemonSpeciesComponent implements OnInit {
   ngOnInit() {
 
     this.subscription = this.route.params.pipe(
-      switchMap((params)=> {
+      switchMap((params) => {
         this.pokemonName = params.name;
         return this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
-          switchMap((data : PokemonDetails)=>{
+          switchMap((data: PokemonDetails) => {
             this.pokemonSprite = data.sprites;
             this.pokemonInfo = data;
             this.pokemonDetails = data.types;
@@ -37,10 +37,10 @@ export class PokemonSpeciesComponent implements OnInit {
           })
         )
       })
-    ).subscribe(data => {
-    
+    ).subscribe((data:PokemonSpecies) => {
+
       this.pokemonSpecieDetails = data;
-      
+
       for (let i of data.flavor_text_entries) {
         if (i.language.name == "en") {
           this.pokemonDescription = i.flavor_text;
@@ -49,8 +49,8 @@ export class PokemonSpeciesComponent implements OnInit {
       }
     },
       error => this.errorMsg = error)
-   
-      
+
+
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

@@ -8,28 +8,28 @@ import { ItemDetails, Sprites } from '../_models/items';
   styleUrls: ['./item-sprite.component.css']
 })
 export class ItemSpriteComponent implements OnInit {
-@Input() itemUrl;
-subscription1;
-itemDetails: ItemDetails;
-itemSprites: Sprites;
-itemDescription;
+  @Input() itemUrl;
+  subscription1;
+  itemDetails: ItemDetails;
+  itemSprites: Sprites;
+  itemDescription;
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
 
     this.pokemonService.getItemDescription(this.itemUrl)
-    .subscribe(data=>{
-      this.itemDetails = data;
-      this.itemSprites = data.sprites;
+      .subscribe((data:ItemDetails) => {
+        this.itemDetails = data;
+        this.itemSprites = data.sprites;
 
-      for(let text of this.itemDetails.flavor_text_entries){
-        if(text.language.name == 'en'){
-          this.itemDescription = text.text;
-          break;
+        for (let text of this.itemDetails.flavor_text_entries) {
+          if (text.language.name == 'en') {
+            this.itemDescription = text.text;
+            break;
+          }
+
         }
-        
-      }
-    });
+      });
   }
 
 }

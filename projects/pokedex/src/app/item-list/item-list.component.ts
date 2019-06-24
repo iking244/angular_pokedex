@@ -11,27 +11,27 @@ import { Items, ItemDetails, Sprites } from '../_models/items';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
-@Input() itemUrl;
-pokeItems = [];
-page  = 48;
+  @Input() itemUrl;
+  pokeItems = [];
+  page = 48;
 
 
-  constructor(private pokemonService:PokemonService,private route:ActivatedRoute) { }
+  constructor(private pokemonService: PokemonService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.pipe(
-      switchMap(()=>{
-      return this.pokemonService.getPokeItems();   
+      switchMap(() => {
+        return this.pokemonService.getPokeItems();
       })
     ).subscribe(
-      (data: Items) =>{
+      (data: Items) => {
         this.pokeItems = data.results;
-  });
+      });
 
- 
+
   }
-  loadMore(){
-    this.page += 48 ;
+  loadMore() {
+    this.page += 48;
   }
 }
 

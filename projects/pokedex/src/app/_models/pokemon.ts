@@ -1,9 +1,9 @@
-export interface Pokemon {
+export class Pokemon {
   name: string;
   url: string;
 }
 
-export class SpriteUrls{
+export interface SpriteUrls{
 back_default: string;
 back_female: string;
 back_shiny: string;
@@ -14,7 +14,7 @@ front_shiny: string;
 front_shiny_female: string;
 }
 
-export interface PokemonDetails {
+export class PokemonDetails {
   species: any;
 sprites: SpriteUrls;
 types: PokemonTypes[];
@@ -30,29 +30,29 @@ export interface PokemonLink{
 results: Pokemon[];
 }
 
-export class PokemonTypes{
+export interface PokemonTypes{
   slot: number;
   type: PokemonType;
 
 }
 
-export class PokemonType{
+export interface PokemonType{
   name: string;
   url: string;
 }
 
-export class Ability{
+export interface Ability{
   name: string;
   url: string;
 }
 
-export class AbilityInfo{
+export interface AbilityInfo{
   ability: Ability;
   is_hidden: boolean;
   slot: number;
 }
 
-export class Stats{
+export interface Stats{
   base_stat: number;
   stat: string;
 }
@@ -60,14 +60,17 @@ export class Stats{
 export class PokemonSpecies{
 base_happiness: string;
 capture_rate: string;
-flavor_text_entries: FlavorText;
+flavor_text_entries: FlavorText[];
 }
 
-export class FlavorText{
+export interface FlavorText{
 flavor_text: string;
-language: string;
+language: Language;
 }
 
+export interface Language{
+  name: string
+}
 
 
 

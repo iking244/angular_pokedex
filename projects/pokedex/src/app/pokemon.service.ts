@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-import {  PokemonLink, PokemonDetails } from './_models/pokemon';
+import {  PokemonLink, PokemonDetails, PokemonSpecies, Pokemon } from './_models/pokemon';
 import { catchError, map } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 import { Items, ItemDetails } from './_models/items';
+import { Chain } from './_evolution/evolution';
 
 @Injectable({
   providedIn: 'root'
@@ -19,34 +20,34 @@ private itemsUrl = "https://pokeapi.co/api/v2/item?offset=0&limit=964";
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getPokemon(): Observable<PokemonLink[]> {
-    return this.http.get<any>(this.url);
+  getPokemon(): Observable<Pokemon> {
+    return this.http.get<Pokemon>(this.url);
   }
   getPokemonInfo(name): Observable<PokemonDetails>{
     return this.http.get<PokemonDetails>(this.pokemonUrl + name).pipe(
       catchError(this.errorHandler));
   }
 
-  getPokemonDesc(name){
-    return this.http.get<any>(this.pokemonSpeciesUrl+ name).pipe(
+  getPokemonDesc(name): Observable<PokemonSpecies>{
+    return this.http.get<PokemonSpecies>(this.pokemonSpeciesUrl+ name).pipe(
       catchError(this.errorHandler));
   }
 
-  getPokemonByType(type){
-    return this.http.get<any>(this.pokemonTypes + type).pipe(
+  getPokemonByType(type):Observable<Pokemon>{
+    return this.http.get<Pokemon>(this.pokemonTypes + type).pipe(
       catchError(this.errorHandler));
   }
 
-  getEvolutionChain(url){
-    return this.http.get<any>(url);
+  getEvolutionChain(url):Observable<Chain>{
+    return this.http.get<Chain>(url);
   }
 
   getPokeItems():Observable<Items>{
-    return this.http.get<any>(this.itemsUrl).pipe(
+    return this.http.get<Items>(this.itemsUrl).pipe(
       catchError(this.errorHandler));
   }
 
-  getItemDescription(url){
+  getItemDescription(url):Observable<ItemDetails>{
     return this.http.get<ItemDetails>(url).pipe(
       catchError(this.errorHandler));
   }
