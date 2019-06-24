@@ -17,6 +17,10 @@ export class ItemSpriteComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngOnChanges(){
+    
     this.pokemonService.getItemDescription(this.itemUrl)
       .subscribe((data:ItemDetails) => {
         this.itemDetails = data;
