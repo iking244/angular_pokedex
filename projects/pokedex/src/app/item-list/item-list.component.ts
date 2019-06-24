@@ -14,12 +14,13 @@ export class ItemListComponent implements OnInit {
   @Input() itemUrl;
   pokeItems = [];
   page = 48;
+  subscription;
 
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.pipe(
+    this.subscription=this.route.params.pipe(
       switchMap(() => {
         return this.pokemonService.getPokeItems();
       })
@@ -29,6 +30,10 @@ export class ItemListComponent implements OnInit {
       });
 
 
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
   loadMore() {
     this.page += 48;

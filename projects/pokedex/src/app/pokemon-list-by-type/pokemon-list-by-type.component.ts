@@ -26,6 +26,10 @@ export class PokemonListByTypeComponent implements OnInit {
       error => this.router.navigate(['**']));
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
 
   loadMore() {
     this.page += 48;
