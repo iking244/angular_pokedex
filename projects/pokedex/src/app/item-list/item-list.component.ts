@@ -25,7 +25,6 @@ page  = 48;
       })
     ).subscribe(
       (data: Items) =>{
-
         this.pokeItems = data.results;
   });
 

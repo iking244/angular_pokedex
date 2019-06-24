@@ -3,9 +3,9 @@ import { PokemonService } from '../pokemon.service';
 import { SpriteUrls, PokemonDetails, PokemonTypes } from '../_models/pokemon';
 
 @Component({
-  selector: 'app-pokemon-details',
-  templateUrl: './pokemon-details.component.html',
-  styleUrls: ['./pokemon-details.component.css']
+  selector: 'app-pokemon-sprite',
+  templateUrl: './pokemon-sprite.component.html',
+  styleUrls: ['./pokemon-sprite.component.css']
 })
 export class PokemonSpritesComponent implements OnInit {
 

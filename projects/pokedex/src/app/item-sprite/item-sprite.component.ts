@@ -19,7 +19,6 @@ itemDescription;
 
     this.pokemonService.getItemDescription(this.itemUrl)
     .subscribe(data=>{
-      console.log(data);
       this.itemDetails = data;
       this.itemSprites = data.sprites;
 

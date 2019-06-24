@@ -9,7 +9,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 const routes: Routes = [
   { path: '', redirectTo: '/pokemon-list', pathMatch: 'full' },
   { path: 'pokemon-list', component: PokemonListComponent },
-  { path: 'pokemon-list/:name', component: PokemonSpeciesComponent},
+  { path: 'pokemon/:name', component: PokemonSpeciesComponent},
   { path: 'pokemon-list/pokemon/:type' , component: PokemonListByTypeComponent },
   { path: 'item-list', component: ItemListComponent},
   { path: "**", component: PageNotFoundComponent},

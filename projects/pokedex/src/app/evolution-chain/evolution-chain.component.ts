@@ -20,7 +20,6 @@ evolution_data: Chain;
     this.evolution_data= data.chain;
     }
     )
-
   }
 
   ngOnDestroy(){
@@ -28,7 +27,7 @@ evolution_data: Chain;
   }
 
   onSelect(name){
-    this.router.navigate(['/pokemon-list',name])
+    this.router.navigate(['/pokemon',name])
   }
 
 }

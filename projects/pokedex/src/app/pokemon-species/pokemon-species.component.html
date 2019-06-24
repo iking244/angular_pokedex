@@ -1,66 +1,68 @@
 <app-header></app-header>
 <app-loading-spinner *ngIf="!pokemonSpecieDetails; else notFound"></app-loading-spinner>
 <ng-container *ngIf="pokemonSpecieDetails">
-<ng-container *ngIf='pokemonSprite'>
+  <ng-container *ngIf='pokemonSprite'>
     <h2> {{pokemonInfo.species.name | titlecase}}
-      </h2>
-   <ng-container *ngIf='pokemonSprite.front_default; else elseBlock'>
-     <div class='image-container'>
-     <img [src] = pokemonSprite.front_default>
-    </div>
-     </ng-container>
-     <div class='description'>
-        <h2>Description</h2>
-        <p>{{pokemonDescription}}</p>
+    </h2>
+
+    <ng-container *ngIf='pokemonSprite.front_default; else elseBlock'>
+      <div class='image-container'>
+        <img [src]=pokemonSprite.front_default>
+      </div>
+    </ng-container>
+
+    <div class='description'>
+      <h2>Description</h2>
+      <p>{{pokemonDescription}}</p>
     </div>
     <div class='stats-container'>
-    <ng-container *ngIf="pokemonInfo">
+      <ng-container *ngIf="pokemonInfo">
         <h2>Stats:</h2>
         <div *ngFor='let p of pokemonInfo.stats'>
           <ul>
-            <li>{{p.stat.name}}: {{p.base_stat}}</li>    
+            <li>{{p.stat.name}}: {{p.base_stat}}</li>
           </ul>
         </div>
         <ul>
           <li>Base Happiness: {{pokemonSpecieDetails.base_happiness}}</li>
           <li>Capture Rate : {{pokemonSpecieDetails.capture_rate}}</li>
         </ul>
-        <ng-container *ngIf ='pokemonInfo'>
-           <ul>
+        <ng-container *ngIf='pokemonInfo'>
+          <ul>
             <li>Height : {{pokemonInfo.height}} m</li>
             <li>Weight : {{pokemonInfo.weight}} lbs</li>
-          </ul>   
-            <div *ngFor='let p of pokemonInfo.abilities'>
-              <ng-container *ngIf='p.is_hidden == false'>
-               <ul>
-                 <li>Skill: {{p.ability.name | titlecase}}</li>
-               </ul> 
-              </ng-container>
-            </div>
+          </ul>
+          <div *ngFor='let p of pokemonInfo.abilities'>
+            <ng-container *ngIf='p.is_hidden == false'>
+              <ul>
+                <li>Skill: {{p.ability.name | titlecase}}</li>
+              </ul>
             </ng-container>
-       </ng-container>
-      </div>
-    
-   </ng-container>
-   <div class='types-container'>
-   <h2>Types:</h2>
-<ng-container  *ngFor="let types of pokemonDetails">
- <div  id= 'container' (click)=onSelect(types.type.name) class="{{types.type.name}}">{{types.type.name | uppercase}}</div>
-  
-</ng-container>
-</div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
 
-<app-evolution-chain [specieUrl]='pokemonSpecieDetails.evolution_chain.url'></app-evolution-chain>
+  </ng-container>
+  <div class='types-container'>
+    <h2>Types:</h2>
+    <ng-container *ngFor="let types of pokemonDetails">
+      <div id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">{{types.type.name | uppercase}}
+      </div>
+
+    </ng-container>
+  </div>
+
+  <app-evolution-chain [specieUrl]='pokemonSpecieDetails.evolution_chain.url'></app-evolution-chain>
 
 
 
 </ng-container>
 
 <ng-template #notFound>
-    {{errorMsg}}
+  {{errorMsg}}
 </ng-template>
 
 <ng-template #elseBlock>
-    <img class='default' 
-    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png"/>
+  <img class='default' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" />
 </ng-template>

@@ -3,8 +3,9 @@
 <ng-container *ngIf =" pokemons ; else elseBlock">
 <span class='container' *ngFor='let p of pokemons.pokemon | paginate: {itemsPerPage:page, currentPage:p}'
 (click)=onSelect(p.pokemon.name) title = '{{p.pokemon.name | titlecase }} details'>
-<app-pokemon-details [pokemonUrl]='p.pokemon.url' [pokemonName]='p.pokemon.name'></app-pokemon-details>
-<b style="cursor: text;">{{p.pokemon.name | uppercase }}</b> </span>
+<b style="cursor: text;">{{p.pokemon.name | uppercase }}</b>
+<app-pokemon-sprite [pokemonUrl]='p.pokemon.url' [pokemonName]='p.pokemon.name'></app-pokemon-sprite>
+ </span>
  
   
 </ng-container>

@@ -30,7 +30,7 @@ loadMore(){
   this.page += 48;
 }
   onSelect(name) {
-    this.router.navigate(['/pokemon-list', name]);
+    this.router.navigate(['/pokemon', name]);
   }
 
 }
