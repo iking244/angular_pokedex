@@ -1,0 +1,8 @@
+<app-loading-spinner *ngIf=!itemSprites></app-loading-spinner>
+<ng-container *ngIf='itemDetails'>
+  <ng-container *ngIf="itemSprites.default">
+   <div><img [src]='itemSprites.default' /></div> 
+
+   <p>{{itemDescription}}</p>
+  </ng-container>
+</ng-container>

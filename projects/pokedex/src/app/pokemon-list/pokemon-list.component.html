@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<div class='container' *ngFor='let pokemon of pokemons.results | paginate: {itemsPerPage:page, currentPage:p}'
+(click)=onSelect(pokemon.name) title = '{{pokemon.name | titlecase }} details'>
+
+<h2>{{pokemon.name | uppercase }}</h2> 
+<app-pokemon-details [pokemonUrl]='pokemon.url' [pokemonName]='pokemon.name'></app-pokemon-details>
+    {{pokemon.id}}</div>
+
+<div class="footer">
+  <button (click)='loadMore()'>Load more Pokemon</button>
+</div>
+
+    
