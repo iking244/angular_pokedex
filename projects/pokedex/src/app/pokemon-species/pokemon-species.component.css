@@ -47,7 +47,6 @@ h2{
 p{
     padding: 0px 30px 15px;
     line-height:30px;
-    font-family: arial;
     font-size:20px;
     text-align:justify;
 
@@ -59,6 +58,7 @@ p{
     margin: 0 20px;
     padding: 15px;
     height:100%;
+  
 }
 
 .image-container{
@@ -69,11 +69,16 @@ p{
 
 li{
     text-align:left;
+    display:block;
     line-height:30px;
-    font-family: arial;
     font-size:20px;
 
     
+}
+
+.stats{
+    width: 10%;
+    text-align:left;
 }
 @media only screen and (min-width: 600px){
  
@@ -89,6 +94,13 @@ li{
     }
     .stats-container{
         border:none;
+        text-align:left;
+    }
+    
+    .stats{
+        width: 15%;
+        text-align:left;
+        margin:auto;
     }
   
   }

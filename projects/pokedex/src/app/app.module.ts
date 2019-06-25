@@ -14,6 +14,7 @@ import { EvolutionChainComponent } from './evolution-chain/evolution-chain.compo
 import { HeaderComponent } from './header/header.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemSpriteComponent } from './item-sprite/item-sprite.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ItemSpriteComponent } from './item-sprite/item-sprite.component';
     EvolutionChainComponent,
     HeaderComponent,
     ItemListComponent,
-    ItemSpriteComponent
+    ItemSpriteComponent,
+    ProgressBarComponent
   
     
   ],

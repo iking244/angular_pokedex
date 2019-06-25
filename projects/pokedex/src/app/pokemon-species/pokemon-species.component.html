@@ -25,10 +25,13 @@
       <ng-container *ngIf="pokemonInfo">
         <h2>Stats:</h2>
         <div *ngFor='let p of pokemonInfo.stats'>
-          <ul>
-            <li>{{p.stat.name}}: {{p.base_stat}}</li>
-          </ul>
+         
+            <div class='stats'> 
+              <p>{{p.stat.name}}: {{p.base_stat}}<p>
+              <app-progress-bar [width$]='p.base_stat'></app-progress-bar>
+            </div>
         </div>
+    
         <ul>
           <li>Base Happiness: {{pokemonSpecieDetails.base_happiness}}</li>
           <li>Capture Rate : {{pokemonSpecieDetails.capture_rate}}</li>

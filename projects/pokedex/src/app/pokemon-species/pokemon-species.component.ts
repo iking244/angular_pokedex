@@ -22,11 +22,13 @@ export class PokemonSpeciesComponent implements OnInit {
   pokemonSpecieDetails;
   pokemonDescription: string;
   public errorMsg;
+  width:any;
+  width$;
 
   constructor(private location:Location,private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit() {
-
+    
     this.subscription = this.route.params.pipe(
       switchMap((params) => {
         this.pokemonName = params.name;
