@@ -2,7 +2,7 @@
 <app-loading-spinner *ngIf="!pokemonSpecieDetails; else notFound"></app-loading-spinner>
 <ng-container *ngIf="pokemonSpecieDetails">
   <ng-container *ngIf='pokemonSprite'>
-    <h2> {{pokemonInfo.species.name | titlecase}}
+    <h2> {{pokemonInfo.name | titlecase}}
     </h2>
 
     <ng-container *ngIf='pokemonSprite.front_default; else elseBlock'>

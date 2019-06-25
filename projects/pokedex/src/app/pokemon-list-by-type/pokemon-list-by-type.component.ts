@@ -38,5 +38,10 @@ export class PokemonListByTypeComponent implements OnInit {
     this.router.navigate(['/pokemon', name]);
   }
 
+  getPokemonId(url) {
+    const id = url.split('/');
+    return id[6];
+  }
+
 }
 

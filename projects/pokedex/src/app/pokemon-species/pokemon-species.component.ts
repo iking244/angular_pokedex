@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./pokemon-species.component.css']
 })
 export class PokemonSpeciesComponent implements OnInit {
-  public pokemonName;
+  private pokemonName;
   pokemonSprite: SpriteUrls;
   pokemonInfo: PokemonDetails;
   pokemonDetails: PokemonTypes[];
@@ -27,13 +27,14 @@ export class PokemonSpeciesComponent implements OnInit {
 
     this.subscription = this.route.params.pipe(
       switchMap((params) => {
+        console.log(params);
         this.pokemonName = params.name;
         return this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
           switchMap((data: PokemonDetails) => {
             this.pokemonSprite = data.sprites;
             this.pokemonInfo = data;
             this.pokemonDetails = data.types;
-            return this.pokemonService.getPokemonDesc(data.species.name);
+            return this.pokemonService.getPokemonDesc(data.id);
           })
         )
       })

@@ -18,6 +18,7 @@ evolution_data: Chain;
     this.subscription = this.pokemonService.getEvolutionChain(this.specieUrl).
     subscribe((data: Chain)=>{
     this.evolution_data= data.chain;
+    console.log(data.chain);
     }
     )
   }
@@ -28,6 +29,11 @@ evolution_data: Chain;
 
   onSelect(name){
     this.router.navigate(['/pokemon',name])
+  }
+
+  getPokemonId(url) {
+    const id = url.split('/');
+    return id[6];
   }
 
 }

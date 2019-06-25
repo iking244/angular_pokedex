@@ -23,8 +23,8 @@ export class PokemonListComponent implements OnInit {
           return this.pokemonService.getPokemon()
         })).subscribe(
 
-          data => {
-            this.pokemons = data
+          (data: Pokemon) => {
+            this.pokemons = data;
           }
         );
   }
@@ -33,8 +33,8 @@ export class PokemonListComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  onSelect(name) {
-    this.router.navigate(['/pokemon', name]);
+  onSelect(id) {
+    this.router.navigate(['/pokemon', id]);
   }
 
   loadMore() {

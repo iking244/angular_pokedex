@@ -1,13 +1,6 @@
 
 
-.default{
-    display:block;
-    margin-left: auto;  
-    margin-right: auto;
-    width:60%;
-    height:132px;
-  
-}
+
 
 img{
     display:block;
@@ -31,10 +24,14 @@ img:hover{
       margin-top:10px;
     }
 
-    img{
-        width:30%;
-        height:55%;
+    .default{
+        display:block;
+        margin-left: auto;  
+        margin-right: auto;
+        width:60%;
+        height:122px;
+      
     }
-  
+
   }
   

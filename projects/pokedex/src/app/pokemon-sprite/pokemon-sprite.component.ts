@@ -24,7 +24,7 @@ subscription;
   ngOnChanges(){
   this.subscription =this.pokemonService.getPokemonInfo(this.pokemonName)
   .subscribe(data => {
-  
+    console.log(this.pokemonName);
     this.pokemonSprites = data.sprites;
     this.pokemonId = data;
 

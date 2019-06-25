@@ -5,8 +5,9 @@
 (click)=onSelect(p.pokemon.name) title = '{{p.pokemon.name | titlecase }} details'>
 <b style="cursor: text;">{{p.pokemon.name | uppercase }}</b>
 <app-pokemon-sprite [pokemonUrl]='p.pokemon.url' [pokemonName]='p.pokemon.name'></app-pokemon-sprite>
- </span>
- 
+<h4>ID# {{ getPokemonId(p.pokemon.url) | number: '3.0-0' }}</h4> 
+</span>
+
   
 </ng-container>
 
