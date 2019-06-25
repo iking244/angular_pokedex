@@ -18,7 +18,6 @@ evolution_data: Chain;
     this.subscription = this.pokemonService.getEvolutionChain(this.specieUrl).
     subscribe((data: Chain)=>{
     this.evolution_data= data.chain;
-    console.log(data.chain);
     }
     )
   }

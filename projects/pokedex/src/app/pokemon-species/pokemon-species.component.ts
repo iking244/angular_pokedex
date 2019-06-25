@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { SpriteUrls, PokemonDetails, PokemonTypes, PokemonSpecies } from '../_models/pokemon';
 import { switchMap } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 
 
@@ -12,28 +13,29 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./pokemon-species.component.css']
 })
 export class PokemonSpeciesComponent implements OnInit {
-  private pokemonName;
+  private pokemonName:number;
   pokemonSprite: SpriteUrls;
   pokemonInfo: PokemonDetails;
   pokemonDetails: PokemonTypes[];
   subscription;
+  pokemonId: number;
   pokemonSpecieDetails;
   pokemonDescription: string;
   public errorMsg;
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
+  constructor(private location:Location,private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit() {
 
     this.subscription = this.route.params.pipe(
       switchMap((params) => {
-        console.log(params);
         this.pokemonName = params.name;
         return this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
           switchMap((data: PokemonDetails) => {
             this.pokemonSprite = data.sprites;
             this.pokemonInfo = data;
             this.pokemonDetails = data.types;
+            this.pokemonId = data.id
             return this.pokemonService.getPokemonDesc(data.id);
           })
         )
@@ -60,5 +62,15 @@ export class PokemonSpeciesComponent implements OnInit {
 
   onSelect(type) {
     this.router.navigate(['/pokemon-list/pokemon/', type]);
+  }
+
+  goNext(){
+    var nextPokemon = this.pokemonId + 1;
+    this.router.navigate(['/pokemon/', nextPokemon]);
+
+  }
+
+  goPrevious(){
+    this.location.back();
   }
 }

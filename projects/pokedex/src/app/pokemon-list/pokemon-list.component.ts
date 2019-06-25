@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PokemonDetails, Pokemon } from '../_models/pokemon';
-import { switchMap, map } from 'rxjs/operators';
+import { PokemonDetails, Pokemon} from '../_models/pokemon';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,10 +10,11 @@ import { switchMap, map } from 'rxjs/operators';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons = {};
+  pokemons= [];
   pokemonId: PokemonDetails;
   subscription;
   page = 48;
+  p = 1;
 
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
@@ -22,9 +23,8 @@ export class PokemonListComponent implements OnInit {
         switchMap(() => {
           return this.pokemonService.getPokemon()
         })).subscribe(
-
           (data: Pokemon) => {
-            this.pokemons = data;
+            this.pokemons = data.results;
           }
         );
   }

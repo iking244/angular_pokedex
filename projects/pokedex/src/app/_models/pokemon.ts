@@ -1,6 +1,7 @@
 export class Pokemon {
   name: string;
   url: string;
+  results: [];
 }
 
 export interface SpriteUrls{
@@ -15,7 +16,7 @@ front_shiny_female: string;
 }
 
 export class PokemonDetails {
-  species: any;
+species: any;
 sprites: SpriteUrls;
 types: PokemonTypes[];
 abilities: AbilityInfo[];
@@ -26,17 +27,19 @@ id: number;
 
 }
 
-export interface PokemonLink{
+export interface PokemonList{
 results: Pokemon[];
 }
 
 export interface PokemonTypes{
+  results: {};
   slot: number;
-  type: PokemonType;
+  type: PokemonType[];
 
 }
 
 export interface PokemonType{
+  results: PokemonTypes;
   name: string;
   url: string;
 }

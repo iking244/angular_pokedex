@@ -3,6 +3,16 @@
     padding:0;
     text-align:center;
 }
+
+button{
+    padding: 10px;
+    border-color:#f4ce42;
+    border-radius:4px;
+    font-size:18px;
+    margin: 0px 10px;
+    background-color:#f4ce42;
+    cursor:pointer;
+}
 #container{
     margin: 0 10px;
     display:inline-block;
