@@ -3,9 +3,8 @@
 }
 body{
     margin: 0;
-    background-image: url("/assets/img/bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color:#facf5a;
+
 }
 .fire{
     background: linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%);

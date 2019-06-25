@@ -13,25 +13,30 @@ export class ItemSpriteComponent implements OnInit {
   itemDetails: ItemDetails;
   itemSprites: Sprites;
   itemDescription;
+  itemEffect;
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
 
   }
 
-  ngOnChanges(){
-    
+// tslint:disable-next-line: use-lifecycle-interface
+  ngOnChanges() {
+
     this.pokemonService.getItemDescription(this.itemUrl)
-      .subscribe((data:ItemDetails) => {
+      .subscribe((data: ItemDetails) => {
         this.itemDetails = data;
         this.itemSprites = data.sprites;
 
-        for (let text of this.itemDetails.flavor_text_entries) {
+        for (const text of this.itemDetails.flavor_text_entries) {
           if (text.language.name == 'en') {
             this.itemDescription = text.text;
             break;
           }
 
+        }
+        for (const text of this.itemDetails.effect_entries){
+          this.itemEffect = text.short_effect;
         }
       });
   }

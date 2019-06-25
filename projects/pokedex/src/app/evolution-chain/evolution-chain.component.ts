@@ -15,9 +15,13 @@ evolution_data: Chain;
   constructor(private pokemonService: PokemonService,private router:Router) { }
 
   ngOnInit() {
+  
+  }
+
+  ngOnChanges(){
     this.subscription = this.pokemonService.getEvolutionChain(this.specieUrl).
     subscribe((data: Chain)=>{
-    this.evolution_data= data.chain;
+    this.evolution_data= data.chain;  
     }
     )
   }

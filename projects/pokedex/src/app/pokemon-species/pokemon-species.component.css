@@ -9,20 +9,22 @@ button{
     border-color:#f4ce42;
     border-radius:4px;
     font-size:18px;
-    margin: 0px 10px;
+    margin: 5px 10px;
     background-color:#f4ce42;
     cursor:pointer;
+}
+
+button:hover{
+    background-color:#e8bd14;
 }
 #container{
     margin: 0 10px;
     display:inline-block;
     border-radius: 15px;
-    padding: 30px 8px;
-    width:40%;
+    padding: 30px 25px;
     margin-bottom: 5px;
     cursor: pointer;
     font-size:24px;
-  
 }
 
 img{
@@ -77,6 +79,7 @@ li{
  
     #container{
         width:15%;
+        padding-left:25px;
     }
 
     li, p{

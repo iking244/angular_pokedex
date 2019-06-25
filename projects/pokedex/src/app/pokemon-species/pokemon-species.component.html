@@ -53,7 +53,8 @@
   <div class='types-container'>
     <h2>Types:</h2>
     <ng-container *ngFor="let types of pokemonDetails">
-      <div id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">{{types.type.name | uppercase}}
+      <div id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">
+          {{types.type.name | uppercase}}
       </div>
 
     </ng-container>

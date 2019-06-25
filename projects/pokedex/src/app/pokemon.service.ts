@@ -28,8 +28,8 @@ private itemsUrl = "https://pokeapi.co/api/v2/item?offset=0&limit=964";
       catchError(this.errorHandler));
   }
 
-  getPokemonDesc(name): Observable<PokemonSpecies>{
-    return this.http.get<PokemonSpecies>(this.pokemonSpeciesUrl+ name).pipe(
+  getPokemonDescription(url): Observable<PokemonSpecies>{
+    return this.http.get<PokemonSpecies>(url).pipe(
       catchError(this.errorHandler));
   }
 

@@ -2,7 +2,7 @@
 
 <ng-container *ngIf =" pokemons ; else elseBlock">
 <span class='container' *ngFor='let p of pokemons.pokemon | paginate: {itemsPerPage:page, currentPage:p}'
-(click)=onSelect(p.pokemon.name) title = '{{p.pokemon.name | titlecase }} details'>
+(click)=onSelect(getPokemonId(p.pokemon.url)) title = '{{p.pokemon.name | titlecase }} details'>
 <b style="cursor: text;">{{p.pokemon.name | uppercase }}</b>
 <app-pokemon-sprite [pokemonUrl]='p.pokemon.url' [pokemonName]='p.pokemon.name'></app-pokemon-sprite>
 <h4>ID# {{ getPokemonId(p.pokemon.url) | number: '3.0-0' }}</h4> 

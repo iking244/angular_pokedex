@@ -36,11 +36,11 @@ export class PokemonSpeciesComponent implements OnInit {
             this.pokemonInfo = data;
             this.pokemonDetails = data.types;
             this.pokemonId = data.id
-            return this.pokemonService.getPokemonDesc(data.id);
+            return this.pokemonService.getPokemonDescription(data.species.url.slice(0,data.species.url.length - 1));
           })
         )
       })
-    ).subscribe((data:PokemonSpecies) => {
+    ).subscribe((data:PokemonSpecies) => {  
 
       this.pokemonSpecieDetails = data;
 
@@ -51,7 +51,7 @@ export class PokemonSpeciesComponent implements OnInit {
         }
       }
     },
-      error => this.errorMsg = error)
+    error => this.router.navigate(['**']));
 
 
   }
@@ -60,13 +60,23 @@ export class PokemonSpeciesComponent implements OnInit {
 
   }
 
+
   onSelect(type) {
     this.router.navigate(['/pokemon-list/pokemon/', type]);
   }
 
   goNext(){
-    var nextPokemon = this.pokemonId + 1;
-    this.router.navigate(['/pokemon/', nextPokemon]);
+
+    var nextPokemon; 
+    
+    if(this.pokemonId == 807){
+      nextPokemon = this.pokemonId + 9194;
+    }else{
+      nextPokemon = this.pokemonId + 1;
+      console.log(nextPokemon);
+    }
+    this.router.navigate(['/pokemon', nextPokemon]);
+
 
   }
 
