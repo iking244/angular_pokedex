@@ -15,6 +15,7 @@ export class PokemonListByTypeComponent implements OnInit {
   errorMsg;
   subscription;
   page = 48;
+  total:number;
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class PokemonListByTypeComponent implements OnInit {
 
 
   loadMore() {
+    console.log(this.total);
     this.page += 48;
   }
   onSelect(name) {

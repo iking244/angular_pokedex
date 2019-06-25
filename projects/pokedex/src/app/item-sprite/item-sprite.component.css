@@ -18,8 +18,9 @@ img{
         display: inline-block;
         height:120px;
         overflow:hidden;
-        
     }
-
+    img{
+        height:45px;
+    }
   }
   

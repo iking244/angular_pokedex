@@ -1,7 +1,6 @@
 <app-header></app-header>
 <div class='container' *ngFor='let pokemon of pokemons | paginate: {itemsPerPage:page, currentPage:p}'
   (click)=onSelect(getPokemonId(pokemon.url)) title='{{pokemon.name | titlecase }} details'>
-
   <h3 style="cursor: text;">{{pokemon.name | uppercase }}</h3>
 
     <app-pokemon-sprite [pokemonUrl]='pokemon.url' [pokemonName]='pokemon.name'></app-pokemon-sprite>

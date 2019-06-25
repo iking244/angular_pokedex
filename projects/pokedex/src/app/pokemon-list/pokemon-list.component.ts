@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PokemonDetails, Pokemon} from '../_models/pokemon';
+import { PokemonDetails, Pokemon } from '../_models/pokemon';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +10,8 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons= [];
+  pokemons = [];
+  pokemonTypes = [];
   pokemonId: PokemonDetails;
   subscription;
   page = 48;
@@ -22,11 +23,12 @@ export class PokemonListComponent implements OnInit {
       this.route.params.pipe(
         switchMap(() => {
           return this.pokemonService.getPokemon()
-        })).subscribe(
-          (data: Pokemon) => {
-            this.pokemons = data.results;
-          }
-        );
+        })
+      ).subscribe((data: Pokemon) => {
+        this.pokemons = data.results;
+      });
+
+
   }
 
 

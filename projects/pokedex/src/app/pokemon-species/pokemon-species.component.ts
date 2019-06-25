@@ -73,7 +73,6 @@ export class PokemonSpeciesComponent implements OnInit {
       nextPokemon = this.pokemonId + 9194;
     }else{
       nextPokemon = this.pokemonId + 1;
-      console.log(nextPokemon);
     }
     this.router.navigate(['/pokemon', nextPokemon]);
 

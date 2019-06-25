@@ -1,4 +1,8 @@
+img{
+height:55px;
+}
 .header {
+  height:60px;
   overflow: hidden;
   background-color: #49beb7;
   padding: 20px 10px;
@@ -45,6 +49,54 @@
     float: none;
   }
 }
+
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+#navbar {
+  margin-bottom:20px;
+  overflow:visible;
+  background-color: #333;
+  height:50px;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
 
 @media screen and (max-width: 375px) {
   .header a {

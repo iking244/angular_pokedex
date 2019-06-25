@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { SpriteUrls, PokemonDetails, PokemonTypes } from '../_models/pokemon';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-sprite',
@@ -14,19 +15,20 @@ export class PokemonSpritesComponent implements OnInit {
 
 pokemonSprites: SpriteUrls;
 pokemonId: PokemonDetails;
+pokemonType= [];
 subscription;
   constructor(private pokemonService: PokemonService) { }
 
-  ngOnInit() {
-   
-
-  }
+  ngOnInit() { }
   ngOnChanges(){
-  this.subscription =this.pokemonService.getPokemonInfo(this.pokemonName)
-  .subscribe(data => {
-    this.pokemonSprites = data.sprites;
-    this.pokemonId = data;
-
+  this.subscription =this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
+    switchMap((data =>{
+      this.pokemonSprites = data.sprites;
+      this.pokemonId = data;
+      return this.pokemonService.getPokemonDescription(this.pokemonUrl);
+    })
+  )).subscribe(data =>{
+      this.pokemonType = data.types;
   });
 }
 
@@ -36,5 +38,3 @@ subscription;
 
 
 }
-
-

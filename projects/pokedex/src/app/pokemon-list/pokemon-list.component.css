@@ -57,15 +57,10 @@
   }
 }
 .container {
+  border: 1px solid rgba(232,174,0,1);
   display: inline-block;
   vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-box-shadow: 1px 2px 20px 8px rgba(232,174,0,1);
-  -moz-box-shadow: 1px 2px 20px 8px rgba(232,174,0,1);
-  box-shadow: 1px 2px 20px 8px rgba(232,174,0,1);;
   display:inline-block;
-  position:relative;
   margin: 0 25px;
   margin-top:10px;
   margin-bottom:15px;
@@ -117,7 +112,6 @@ h2{
 @media only screen and (min-width: 600px){
  
   .container{
-    position: relative;
     width:15%;
     height:100%;
     margin: 5px 10px;
@@ -161,7 +155,6 @@ h2{
       display: inline-block;
       vertical-align: middle;
       display:inline-block;
-      position:relative;
       margin: 0 25px;
       margin-top:10px;
       margin-bottom:15px;

@@ -32,7 +32,7 @@ results: Pokemon[];
 }
 
 export interface PokemonTypes{
-  results: {};
+  results: [];
   slot: number;
   type: PokemonType[];
 
@@ -64,6 +64,8 @@ export class PokemonSpecies{
 base_happiness: string;
 capture_rate: string;
 flavor_text_entries: FlavorText[];
+  type: any[];
+  types: any;
 }
 
 export interface FlavorText{
