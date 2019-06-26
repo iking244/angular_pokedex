@@ -2,20 +2,19 @@
     text-align: left;
 }
 .bar{
-    width:150px;
-    margin-left:5px;
+    width:100%;
     border:1px solid black;
     float:left;
 }
 .bar-container{
    
-    height:10px;
+    height:15px;
     width:100%;
    
 }
 
 .progress-bar{
-    height: 10px;
+    height:15px;
     background: green;
     border-radius:5px;
 }
