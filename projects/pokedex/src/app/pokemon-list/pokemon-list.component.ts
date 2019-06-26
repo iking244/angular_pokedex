@@ -21,7 +21,8 @@ export class PokemonListComponent implements OnInit {
   ngOnInit() {
     this.subscription =
       this.route.params.pipe(
-        switchMap(() => {
+        switchMap((params) => {
+          this.p= params.pageNum; 
           return this.pokemonService.getPokemon()
         })
       ).subscribe((data: Pokemon) => {
@@ -31,9 +32,15 @@ export class PokemonListComponent implements OnInit {
 
   }
 
-
+  ngOnChanges(){
+  
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  myChanges(event) {
+    this.p = event.currentPage;
   }
   onSelect(id) {
     this.router.navigate(['/pokemon', id]);
