@@ -22,10 +22,8 @@ export class PokemonSpeciesComponent implements OnInit {
   pokemonSpecieDetails;
   pokemonDescription: string;
   public errorMsg;
-  width:any;
-  width$;
 
-  constructor(private location:Location,private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
+  constructor(private location: Location,private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit() {
     
@@ -42,7 +40,7 @@ export class PokemonSpeciesComponent implements OnInit {
           })
         )
       })
-    ).subscribe((data:PokemonSpecies) => {  
+    ).subscribe((data: PokemonSpecies) => {  
 
       this.pokemonSpecieDetails = data;
 

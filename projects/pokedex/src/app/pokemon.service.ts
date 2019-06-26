@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { PokemonDetails, PokemonSpecies, Pokemon, PokemonType, PokemonTypes } from './_models/pokemon';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 import { Items, ItemDetails } from './_models/items';
 import { Chain } from './_evolution/evolution';
+import { Abilities } from './_models/abilities';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ private pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/';
 private pokemonSpeciesUrl = 'https://pokeapi.co/api/v2/pokemon-species/';
 private pokemonTypes= 'https://pokeapi.co/api/v2/type/';
 private itemsUrl = "https://pokeapi.co/api/v2/item?offset=0&limit=964";
+private abilityUrl = "https://pokeapi.co/api/v2/ability/"
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -61,9 +63,4 @@ private itemsUrl = "https://pokeapi.co/api/v2/item?offset=0&limit=964";
     return observableThrowError(error.message || 'server error ');
   }
 
- 
-
-
-
- 
 }
