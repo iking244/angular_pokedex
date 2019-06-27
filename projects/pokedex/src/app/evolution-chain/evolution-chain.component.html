@@ -1,6 +1,6 @@
 <ng-container *ngIf='evolution_data'>
   <div class='container'>
-    <h2>EVOLUTION CHART:</h2>
+    <h2>Evolution Chart:</h2>
     <div class='innerContainer'>
       <h3>{{evolution_data.species.name | titlecase}}</h3>
       <app-pokemon-sprite (click)='onSelect(getPokemonId(evolution_data.species.url))' [pokemonName]='getPokemonId(evolution_data.species.url)'

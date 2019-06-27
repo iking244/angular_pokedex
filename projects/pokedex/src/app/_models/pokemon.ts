@@ -4,7 +4,7 @@ export class Pokemon {
   results: [];
 }
 
-export interface SpriteUrls{
+export interface SpriteUrls {
 back_default: string;
 back_female: string;
 back_shiny: string;
@@ -27,53 +27,54 @@ id: number;
 
 }
 
-export interface PokemonList{
+export interface PokemonList {
 results: Pokemon[];
 }
 
-export interface PokemonTypes{
+export interface PokemonTypes {
   results: [];
   slot: number;
   type: PokemonType[];
 
 }
 
-export interface PokemonType{
+export interface PokemonType {
   results: PokemonTypes;
   name: string;
   url: string;
 }
 
-export interface Ability{
+export interface Ability {
   name: string;
   url: string;
 }
 
-export interface AbilityInfo{
+export interface AbilityInfo {
   ability: Ability;
   is_hidden: boolean;
   slot: number;
 }
 
-export interface Stats{
+export interface Stats {
   base_stat: number;
   stat: string;
 }
 
-export class PokemonSpecies{
+export class PokemonSpecies {
 base_happiness: string;
 capture_rate: string;
 flavor_text_entries: FlavorText[];
-  type: any[];
-  types: any;
+type: any[];
+types: any;
+name: Pokemon;
 }
 
-export interface FlavorText{
+export interface FlavorText {
 flavor_text: string;
 language: Language;
 }
 
-export interface Language{
+export interface Language {
   name: string
 }
 

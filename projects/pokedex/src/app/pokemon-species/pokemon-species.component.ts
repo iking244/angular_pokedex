@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { SpriteUrls, PokemonDetails, PokemonTypes, PokemonSpecies } from '../_models/pokemon';
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 
 
@@ -12,21 +13,20 @@ import { Location } from '@angular/common';
   templateUrl: './pokemon-species.component.html',
   styleUrls: ['./pokemon-species.component.css']
 })
-export class PokemonSpeciesComponent implements OnInit {
-  private pokemonName:number;
+export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
+  private pokemonName: number;
   pokemonSprite: SpriteUrls;
   pokemonInfo: PokemonDetails;
   pokemonDetails: PokemonTypes[];
-  subscription;
+  subscription: Subscription;
   pokemonId: number;
   pokemonSpecieDetails;
   pokemonDescription: string;
   public errorMsg;
 
-  constructor(private location: Location,private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
+  constructor(private location: Location, private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit() {
-    
     this.subscription = this.route.params.pipe(
       switchMap((params) => {
         this.pokemonName = params.name;
@@ -35,17 +35,17 @@ export class PokemonSpeciesComponent implements OnInit {
             this.pokemonSprite = data.sprites;
             this.pokemonInfo = data;
             this.pokemonDetails = data.types;
-            this.pokemonId = data.id
-            return this.pokemonService.getPokemonDescription(data.species.url.slice(0,data.species.url.length - 1));
+            this.pokemonId = data.id;
+            return this.pokemonService.getPokemonDescription(data.species.url.slice(0, data.species.url.length - 1));
           })
-        )
+        );
       })
-    ).subscribe((data: PokemonSpecies) => {  
+    ).subscribe((data: PokemonSpecies) => {
 
       this.pokemonSpecieDetails = data;
 
-      for (let i of data.flavor_text_entries) {
-        if (i.language.name == "en") {
+      for (const i of data.flavor_text_entries) {
+        if (i.language.name === 'en') {
           this.pokemonDescription = i.flavor_text;
           break;
         }
@@ -60,18 +60,23 @@ export class PokemonSpeciesComponent implements OnInit {
 
   }
 
+  ngOnChanges() {
+    this.subscription.unsubscribe();
+  }
 
   onSelect(type) {
     this.router.navigate(['/pokemon-list/pokemon/', type]);
   }
 
-  goNext(){
+  goNext() {
 
-    var nextPokemon; 
-    
-    if(this.pokemonId == 807){
+    let nextPokemon;
+    if (this.pokemonId === 807) {
       nextPokemon = this.pokemonId + 9194;
-    }else{
+    } else if (this.pokemonId === 10157){
+      this.router.navigate(['/pokemon', 1]);
+      return;
+     } else {
       nextPokemon = this.pokemonId + 1;
     }
     this.router.navigate(['/pokemon', nextPokemon]);
@@ -79,7 +84,20 @@ export class PokemonSpeciesComponent implements OnInit {
 
   }
 
-  goPrevious(){
-    this.location.back();
+  goPrevious() {
+    let nextPokemon;
+    if (this.pokemonId === 10001) {
+      nextPokemon = this.pokemonId - 9194;
+    } else if (this.pokemonId === 1){
+      this.router.navigate(['/pokemon', 10157]);
+      return;
+    } else {
+      nextPokemon = this.pokemonId - 1;
+    }
+    this.router.navigate(['/pokemon', nextPokemon]);
+  }
+
+  setCurrent(num){
+    this.router.navigate(['/pokemon-list' + num]);
   }
 }

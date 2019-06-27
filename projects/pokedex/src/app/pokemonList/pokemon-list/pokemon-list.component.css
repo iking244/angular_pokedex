@@ -57,6 +57,7 @@
   }
 }
 .container {
+  cursor:pointer;
   border: 1px solid rgba(232,174,0,1);
   display: inline-block;
   vertical-align: middle;
@@ -164,6 +165,7 @@ h2{
       text-align: center;
       font-size:90%;
       font-family: sans-serif;
+      
     }
    
   

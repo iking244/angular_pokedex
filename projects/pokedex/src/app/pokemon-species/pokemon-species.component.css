@@ -2,9 +2,19 @@
     margin:0;
     padding:0;
     text-align:center;
+    box-sizing: border-box;
 }
 
-button{
+.disabled{
+    padding: 10px;
+    border-color:#f4ce42;
+    border-radius:4px;
+    font-size:18px;
+    margin: 5px 10px;
+    background-color:#f4ce42;
+    cursor: not-allowed;
+}
+.active{
     padding: 10px;
     border-color:#f4ce42;
     border-radius:4px;
@@ -14,17 +24,18 @@ button{
     cursor:pointer;
 }
 
-button:hover{
+.active:hover{
     background-color:#e8bd14;
 }
 #container{
     margin: 0 10px;
     display:inline-block;
-    border-radius: 15px;
-    padding: 30px 25px;
+    border-radius: 10px;
+    padding: 20px 20px;
     margin-bottom: 5px;
     cursor: pointer;
     font-size:24px;
+    width:40%;
 }
 
 img.specie{
@@ -49,6 +60,7 @@ ul{
 h2{
     padding: 5px 30px 15px;
 }
+
 p{
     padding: 0px 30px 15px;
     line-height:30px;
@@ -92,11 +104,12 @@ li{
 
 .img-desc-container{
     display:inline-block;
+    width:100%;
+    padding: 10px;
  
 }
 
 .img-stats-container{
-
     width:100%;
     height:833px;
     display:inline-block;
@@ -112,7 +125,9 @@ li{
     width:100%;
     height:400px;
     float:none;
+    padding:20px;
 }
+
 
 table{
     border:none;
@@ -122,42 +137,70 @@ tr,td{
     width:500px;
 }
 
-@media only screen and (min-width: 800px){
+.desc{
+    width: 100%;
+    height: 60%;
+    text-align: justify;
+}
+.skills{
+    width: 100%;
+    height: 40%;
+    text-align: justify;  
+}
+
+
+@media only screen and (min-width: 880px){
+    .desc{
+        height:25%;
+    }
     tr,td{
         width:320px;
     }
     .img-stats-container{
-        width:30%
+        float:left;
+        width:40%;
+    
+    }
+    .img-desc-container{
+        padding:50px 200px;
+       
+    
     }
     .desc-container{
-        width:calc(70% - 4px);
+        width:calc(60% - 4px);
         float:right;
+      
     }
-    #container{
-        width:15%;
-        padding-left:25px;
-    }
-
+  
     li, p{
-        text-align:center;
+        text-align:left;
         font-size:16px;
 
     }
     .stats-container{
         text-align:left;
+  
     }
     
     .stats{
         width: 15%;
         text-align:left;
         margin:auto;
+     
     }
 
     .desc-container{
+        width:calc(70% -4px);
         height:833px;
-
+        float:right;
     }
-    
+
+
+    #container{
+        width:25%;
+    }
+
+
 
   
   }

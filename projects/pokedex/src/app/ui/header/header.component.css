@@ -1,8 +1,12 @@
+*{
+  box-sizing: border-box;
+}
 img{
 height:55px;
 }
 .header {
-  height:60px;
+  height:120px;
+  width:100%;
   overflow: hidden;
   background-color: #49beb7;
   padding: 20px 10px;

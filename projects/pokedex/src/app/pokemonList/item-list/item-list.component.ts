@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PokemonService } from '../pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Items, ItemDetails, Sprites } from '../_models/items';
+import { Items,} from '../../_models/items';
+import { PokemonService } from '../../pokemon.service';
 
 
 @Component({

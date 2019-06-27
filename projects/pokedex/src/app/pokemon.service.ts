@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-import { PokemonDetails, PokemonSpecies, Pokemon, PokemonType, PokemonTypes } from './_models/pokemon';
+import { PokemonDetails, PokemonSpecies, Pokemon, PokemonTypes } from './_models/pokemon';
 import { catchError, map } from 'rxjs/operators';
-
 import { Router } from '@angular/router';
 import { Items, ItemDetails } from './_models/items';
 import { Chain } from './_evolution/evolution';
@@ -57,6 +56,12 @@ private abilityUrl = "https://pokeapi.co/api/v2/ability/"
   getPokemonTypes():Observable<PokemonTypes>{
     return this.http.get<PokemonTypes>("https://pokeapi.co/api/v2/type/").pipe(
       catchError(this.errorHandler));
+  }
+
+  getAbilityDetails(url): Observable<Abilities> {
+    return this.http.get<Abilities>(url).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   errorHandler(error : HttpErrorResponse){
