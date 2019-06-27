@@ -7,6 +7,7 @@
       <div class='top-container'>
         <button class="active"(click)="goPrevious()">Previous Pokemon</button>
         <Button class="active" (click)="goNext()">Next Pokemon</Button>
+
       </div>
       <div class="img-desc-container"> 
       <div class='img-stats-container'>
@@ -86,6 +87,7 @@
 </ng-template>
 
 <ng-template #elseBlock>
+
     <ng-container *ngIf='pokemonSprite.front_default; else elseBlock2'>
         <h2> {{pokemonInfo.name | titlecase}}</h2>
         <div class='image-container'>
@@ -100,6 +102,7 @@
 </ng-template>
 
 
+<ng-template #elseBlocks>
+    <button class="active"(click)="goPrevious()">Previous Pokemon</button>
+</ng-template>
 
-
-    

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonDetails, Pokemon } from '../../_models/pokemon';
-import { switchMap } from 'rxjs/operators';
 import { PokemonService } from '../../pokemon.service';
 
 @Component({
@@ -20,22 +19,11 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) { }
   
   ngOnInit() {
-
-    this.subscription =
-      this.route.params.pipe(
-        switchMap((params) => { 
-          return this.pokemonService.getPokemon()
-        })
-      ).subscribe((data: Pokemon) => {
-
     this.subscription = this.pokemonService.getPokemon().subscribe(
       (data: Pokemon) => {
-
         this.pokemons = data.results;
       }
     );
-
-  });
   }
 
   ngOnChanges(){
@@ -45,9 +33,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  myChanges(event) {
-    this.p = event.currentPage;
-  }
+ 
   onSelect(id) {
     this.router.navigate(['/pokemon', id]);
   }

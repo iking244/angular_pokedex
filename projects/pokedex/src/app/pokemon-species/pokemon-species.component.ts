@@ -60,7 +60,7 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
 
   }
 
-  ngOnChanges() {
+  ngOnChanges(){
     this.subscription.unsubscribe();
   }
 
