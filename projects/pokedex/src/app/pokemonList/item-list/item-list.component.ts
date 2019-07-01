@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Items,} from '../../_models/items';
+import { Items } from '../../_models/items';
 import { PokemonService } from '../../pokemon.service';
 
 
@@ -10,7 +10,7 @@ import { PokemonService } from '../../pokemon.service';
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.css']
 })
-export class ItemListComponent implements OnInit {
+export class ItemListComponent implements OnInit, OnDestroy {
   @Input() itemUrl;
   pokeItems = [];
   page = 48;
@@ -20,7 +20,7 @@ export class ItemListComponent implements OnInit {
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription=this.route.params.pipe(
+    this.subscription = this.route.params.pipe(
       switchMap(() => {
         return this.pokemonService.getPokeItems();
       })
@@ -32,7 +32,7 @@ export class ItemListComponent implements OnInit {
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
   loadMore() {

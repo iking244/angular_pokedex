@@ -37,7 +37,10 @@ export class PokemonListByTypeComponent implements OnInit, OnDestroy {
   onSelect(name) {
     this.router.navigate(['/pokemon', name]);
   }
-
+  getPokemonId(url) {
+    const id = url.split('/');
+    return id[6];
+  }
 
 
 }

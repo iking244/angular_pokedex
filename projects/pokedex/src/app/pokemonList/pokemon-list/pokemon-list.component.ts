@@ -11,13 +11,13 @@ import { PokemonService } from '../../pokemon.service';
 export class PokemonListComponent implements OnInit, OnDestroy {
   pokemons = [];
   pokemonTypes = [];
-  pokemonId: PokemonDetails;
+  pokemonId;
   subscription;
   page = 48;
   p = 1;
 
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) { }
-  
+
   ngOnInit() {
     this.subscription = this.pokemonService.getPokemon().subscribe(
       (data: Pokemon) => {
@@ -26,14 +26,11 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnChanges(){
-  
-  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
- 
+
   onSelect(id) {
     this.router.navigate(['/pokemon', id]);
   }

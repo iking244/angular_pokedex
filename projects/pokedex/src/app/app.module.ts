@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule,routingComponents } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import { ItemSpriteComponent } from './sprites/item-sprite/item-sprite.component
 import { ProgressBarComponent } from './ui/progress-bar/progress-bar.component';
 import { AbilityDetailComponent } from './ability-detail/ability-detail.component';
 import { PokemonSpritesComponent } from './sprites/pokemon-sprite/pokemon-sprite.component';
+import { PreviousNextButtonComponent } from './ui/previous-next-button/previous-next-button.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +31,17 @@ import { PokemonSpritesComponent } from './sprites/pokemon-sprite/pokemon-sprite
     ItemListComponent,
     ItemSpriteComponent,
     ProgressBarComponent,
-    AbilityDetailComponent
-  
-    
+    AbilityDetailComponent,
+    PreviousNextButtonComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule
-   
+
 
   ],
   providers: [],

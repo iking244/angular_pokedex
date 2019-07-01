@@ -3,34 +3,43 @@
     <h2>Evolution Chart:</h2>
     <div class='innerContainer'>
       <h3>{{evolution_data.species.name | titlecase}}</h3>
+      <b>>></b> 
       <app-pokemon-sprite (click)='onSelect(getPokemonId(evolution_data.species.url))' [pokemonName]='getPokemonId(evolution_data.species.url)'
       [pokemonUrl]="evolution_data.species.url">
       </app-pokemon-sprite>
+      
 
     </div>
     <ng-container *ngFor='let FirstEvolve of evolution_data.evolves_to'>
       <div class='innerContainer'>
         <h3>{{FirstEvolve.species.name | titlecase}}</h3>
+        <b>>></b> 
         <app-pokemon-sprite (click)='onSelect(getPokemonId(FirstEvolve.species.url))' [pokemonName]='getPokemonId(FirstEvolve.species.url)'
         [pokemonUrl]="FirstEvolve.species.url">
+        
         </app-pokemon-sprite>
       </div>
       <ng-container *ngFor='let SecondEvolve of FirstEvolve.evolves_to'>
         <div class='innerContainer'>
           <h3>{{SecondEvolve.species.name | titlecase}}</h3>
+          <b>>></b> 
           <app-pokemon-sprite (click)='onSelect(getPokemonId(SecondEvolve.species.url))' [pokemonName]='getPokemonId(SecondEvolve.species.url)'
           [pokemonUrl]="SecondEvolve.species.url">
-          </app-pokemon-sprite>
+          </app-pokemon-sprite> 
+          
         </div>
         <ng-container *ngFor='let finalEvolve of SecondEvolve.evolves_to'>
             <div class='innerContainer'>
                 <h3>{{finalEvolve.species.name | titlecase}}</h3>
+                <b>>></b> 
                 <app-pokemon-sprite (click)='onSelect(getPokemonId(finalEvolve.species.url))' [pokemonName]='getPokemonId(finalEvolve.species.url)'
                 [pokemonUrl]="finalEvolve.species.url">
                 </app-pokemon-sprite>
+               
               </div>
         </ng-container>
       </ng-container>
     </ng-container>
   </div>
 </ng-container>
+

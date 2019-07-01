@@ -1,28 +1,26 @@
-*{
+* {
     text-align: left;
 }
-.bar{
-    width:100%;
-    border:1px solid black;
-    float:left;
-}
-.bar-container{
-   
-    height:15px;
-    width:100%;
-   
+
+.bar {
+    width: 100%;
+    border: 1px solid black;
+    float: left;
 }
 
-.progress-bar{
-    height:15px;
+.bar-container {
+    height: 15px;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 15px;
     background: green;
-    border-radius:5px;
+    border-radius: 5px;
 }
 
-
-@media only screen and (min-width: 600px){
- .bar{
-     float:none;
- }
- 
-  }
+@media only screen and (min-width: 600px) {
+    .bar {
+        float: none;
+    }
+}

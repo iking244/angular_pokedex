@@ -9,10 +9,10 @@ import { ItemListComponent } from './pokemonList/item-list/item-list.component';
 const routes: Routes = [
   { path: '', redirectTo: '/pokemon-list', pathMatch: 'full' },
   { path: 'pokemon-list', component: PokemonListComponent },
-  { path: 'pokemon/:name', component: PokemonSpeciesComponent},
-  { path: 'pokemon-list/pokemon/:type' , component: PokemonListByTypeComponent },
-  { path: 'item-list', component: ItemListComponent},
-  { path: '**', component: PageNotFoundComponent},
+  { path: 'pokemon/:name', component: PokemonSpeciesComponent },
+  { path: 'pokemon-list/pokemon/:type', component: PokemonListByTypeComponent },
+  { path: 'item-list', component: ItemListComponent },
+  { path: '**', component: PageNotFoundComponent },
 
 ];
 
@@ -21,5 +21,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [PokemonListComponent, PokemonSpeciesComponent,PokemonListByTypeComponent
-                                  ,PageNotFoundComponent,ItemListComponent]
+export const routingComponents = [PokemonListComponent, PokemonSpeciesComponent, PokemonListByTypeComponent
+  , PageNotFoundComponent, ItemListComponent]

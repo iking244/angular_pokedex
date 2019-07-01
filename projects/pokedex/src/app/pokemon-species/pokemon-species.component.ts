@@ -51,7 +51,7 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
         }
       }
     },
-    error => this.router.navigate(['**']));
+      error => this.router.navigate(['**']));
 
 
   }
@@ -60,7 +60,7 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.subscription.unsubscribe();
   }
 
@@ -68,36 +68,5 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
     this.router.navigate(['/pokemon-list/pokemon/', type]);
   }
 
-  goNext() {
 
-    let nextPokemon;
-    if (this.pokemonId === 807) {
-      nextPokemon = this.pokemonId + 9194;
-    } else if (this.pokemonId === 10157){
-      this.router.navigate(['/pokemon', 1]);
-      return;
-     } else {
-      nextPokemon = this.pokemonId + 1;
-    }
-    this.router.navigate(['/pokemon', nextPokemon]);
-
-
-  }
-
-  goPrevious() {
-    let nextPokemon;
-    if (this.pokemonId === 10001) {
-      nextPokemon = this.pokemonId - 9194;
-    } else if (this.pokemonId === 1){
-      this.router.navigate(['/pokemon', 10157]);
-      return;
-    } else {
-      nextPokemon = this.pokemonId - 1;
-    }
-    this.router.navigate(['/pokemon', nextPokemon]);
-  }
-
-  setCurrent(num){
-    this.router.navigate(['/pokemon-list' + num]);
-  }
 }

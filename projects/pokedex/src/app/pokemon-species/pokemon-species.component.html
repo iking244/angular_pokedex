@@ -1,34 +1,42 @@
 <app-header></app-header>
+
 <app-loading-spinner *ngIf="!pokemonSpecieDetails && !pokemonDescription; else notFound"></app-loading-spinner>
 
 <ng-container *ngIf="pokemonSpecieDetails">
   <ng-container *ngIf='pokemonSprite'>
-    
-      <div class='top-container'>
-        <button class="active"(click)="goPrevious()">Previous Pokemon</button>
-        <Button class="active" (click)="goNext()">Next Pokemon</Button>
 
-      </div>
-      <div class="img-desc-container"> 
+    <div class='top-container'>
+
+      <app-previous-next-button [pokemonName]="pokemonInfo.name" [pokemonId]="pokemonId"></app-previous-next-button>
+
+    </div>
+    <div class="img-desc-container">
       <div class='img-stats-container'>
         <ng-container *ngIf='pokemonSprite.front_shiny; else elseBlock'>
           <h2> {{pokemonInfo.name | titlecase}}</h2>
+
+
           <div class='image-container'>
-            <img class="specie"[src]=pokemonSprite.front_shiny>
+            <img class="specie" [src]=pokemonSprite.front_shiny>
           </div>
         </ng-container>
         <div class='stats-container'>
           <ng-container *ngIf="pokemonInfo">
             <h2>Stats:</h2>
-            <table><tbody>
+            <table>
+              <tbody>
                 <div *ngFor='let p of pokemonInfo.stats'>
-                    <tr><td>{{p.stat.name}}: {{p.base_stat}}
-                        <app-progress-bar [width$]='p.base_stat'></app-progress-bar>
-                    </td></tr><p>
-                        
-                  </div>
-            </tbody></table>
-           
+                  <tr>
+                    <td>{{p.stat.name}}: {{p.base_stat}}
+                      <app-progress-bar [width$]='p.base_stat'></app-progress-bar>
+                    </td>
+                  </tr>
+                  <p>
+
+                </div>
+              </tbody>
+            </table>
+
             <ul>
               <li>Base Happiness: {{pokemonSpecieDetails.base_happiness}}</li>
               <li>Capture Rate : {{pokemonSpecieDetails.capture_rate}}</li>
@@ -47,29 +55,30 @@
         <div class="desc">
           <h2>Description</h2>
           {{pokemonDescription}}
-        </div>  
-          
+        </div>
+
 
         <div class='types-container'>
           <div class='skills'>
-          <h2>Types:</h2>
-          <ng-container *ngFor="let types of pokemonDetails">
-            <span id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">
-             {{types.type.name | titlecase}}</span>
-          </ng-container>
-          <h2>Skills:</h2>
-          <div *ngFor='let p of pokemonInfo.abilities'>
+            <h2>Types:</h2>
+            <ng-container *ngFor="let types of pokemonDetails">
+              <span id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">
+                {{types.type.name | titlecase}}</span>
+            </ng-container>
+            <h2>Skills:</h2>
+            <div *ngFor='let p of pokemonInfo.abilities'>
               <ul>
                 <li>{{p.ability.name | titlecase}}<br>
-                <app-ability-detail [abilityUrl]='p.ability.url'></app-ability-detail></li>
+                  <app-ability-detail [abilityUrl]='p.ability.url'></app-ability-detail>
+                </li>
               </ul>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
   </ng-container>
-  
+
 
 
   <div class="evolution-container">
@@ -88,21 +97,20 @@
 
 <ng-template #elseBlock>
 
-    <ng-container *ngIf='pokemonSprite.front_default; else elseBlock2'>
-        <h2> {{pokemonInfo.name | titlecase}}</h2>
-        <div class='image-container'>
-          <img class="specie"[src]=pokemonSprite.front_default>
-        </div>
-      </ng-container>
-      <ng-template #elseBlock2>
-          <h2> {{pokemonInfo.name | titlecase}}</h2>
-          <img class='default' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" />
-      </ng-template>
-       
+  <ng-container *ngIf='pokemonSprite.front_default; else elseBlock2'>
+    <h2> {{pokemonInfo.name | titlecase}}</h2>
+    <div class='image-container'>
+      <img class="specie" [src]=pokemonSprite.front_default>
+    </div>
+  </ng-container>
+  <ng-template #elseBlock2>
+    <h2> {{pokemonInfo.name | titlecase}}</h2>
+    <img class='default' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" />
+  </ng-template>
+
 </ng-template>
 
 
 <ng-template #elseBlocks>
-    <button class="active"(click)="goPrevious()">Previous Pokemon</button>
+  <button class="active" (click)="goPrevious()">Previous Pokemon</button>
 </ng-template>
-

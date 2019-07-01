@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { PokemonService } from '../../pokemon.service';
 import { ItemDetails, Sprites } from '../../_models/items';
 
@@ -7,7 +7,7 @@ import { ItemDetails, Sprites } from '../../_models/items';
   templateUrl: './item-sprite.component.html',
   styleUrls: ['./item-sprite.component.css']
 })
-export class ItemSpriteComponent implements OnInit {
+export class ItemSpriteComponent implements OnInit, OnChanges {
   @Input() itemUrl;
   subscription1;
   itemDetails: ItemDetails;
@@ -20,7 +20,7 @@ export class ItemSpriteComponent implements OnInit {
 
   }
 
-// tslint:disable-next-line: use-lifecycle-interface
+
   ngOnChanges() {
 
     this.pokemonService.getItemDescription(this.itemUrl)
@@ -35,7 +35,7 @@ export class ItemSpriteComponent implements OnInit {
           }
 
         }
-        for (const text of this.itemDetails.effect_entries){
+        for (const text of this.itemDetails.effect_entries) {
           this.itemEffect = text.short_effect;
         }
       });

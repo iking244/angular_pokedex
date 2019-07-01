@@ -1,37 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Router } from '@angular/router';
-import { Chain } from '../_evolution/evolution';
+import { Chain } from '../_models/_evolution/evolution';
 
 @Component({
   selector: 'app-evolution-chain',
   templateUrl: './evolution-chain.component.html',
   styleUrls: ['./evolution-chain.component.css']
 })
-export class EvolutionChainComponent implements OnInit {
+export class EvolutionChainComponent implements OnInit, OnChanges, OnDestroy {
 @Input() specieUrl: string;
 subscription;
 evolution_data: Chain;
-  constructor(private pokemonService: PokemonService,private router:Router) { }
+  constructor(private pokemonService: PokemonService, private router: Router) { }
 
-  ngOnInit() {
-  
-  }
+  ngOnInit() {}
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.subscription = this.pokemonService.getEvolutionChain(this.specieUrl).
-    subscribe((data: Chain)=>{
-    this.evolution_data= data.chain;  
+    subscribe((data: Chain) => {
+    this.evolution_data = data.chain;
     }
-    )
+    );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onSelect(name){
-    this.router.navigate(['/pokemon',name])
+  onSelect(name) {
+    this.router.navigate(['/pokemon', name]);
   }
 
   getPokemonId(url) {

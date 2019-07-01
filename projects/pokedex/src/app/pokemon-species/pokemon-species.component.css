@@ -1,206 +1,173 @@
-*{
-    margin:0;
-    padding:0;
-    text-align:center;
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
     box-sizing: border-box;
 }
 
-.disabled{
+.disabled {
     padding: 10px;
-    border-color:#f4ce42;
-    border-radius:4px;
-    font-size:18px;
+    border-color: #f4ce42;
+    border-radius: 4px;
+    font-size: 18px;
     margin: 5px 10px;
-    background-color:#f4ce42;
+    background-color: #f4ce42;
     cursor: not-allowed;
 }
-.active{
-    padding: 10px;
-    border-color:#f4ce42;
-    border-radius:4px;
-    font-size:18px;
-    margin: 5px 10px;
-    background-color:#f4ce42;
-    cursor:pointer;
-}
 
-.active:hover{
-    background-color:#e8bd14;
-}
-#container{
+#container {
     margin: 0 10px;
-    display:inline-block;
+    display: inline-block;
     border-radius: 10px;
     padding: 20px 20px;
     margin-bottom: 5px;
     cursor: pointer;
-    font-size:24px;
-    width:40%;
+    font-size: 24px;
+    width: 40%;
 }
 
-img.specie{
-    display:block;
-    height:100%;
-    margin:auto;
+#container:hover {
+    opacity: 0.7;
 }
 
-img.default{
-    height:5%;
+
+img.specie {
+    display: block;
+    height: 100%;
+    margin: auto;
 }
 
-ul{ 
-    list-style:none;
+img.default {
+    height: 5%;
 }
 
-.textDiv{
-    font-weight:bold;
-    padding-top:10px;
+ul {
+    list-style: none;
 }
 
-h2{
+.textDiv {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+h2 {
     padding: 5px 30px 15px;
 }
 
-p{
+p {
     padding: 0px 30px 15px;
-    line-height:30px;
-    font-size:20px;
-    text-align:justify;
-
+    line-height: 30px;
+    font-size: 20px;
+    text-align: justify;
 }
 
-.stats-container{
+.stats-container {
     border: 1px solid black;
-    border-radius:15px;
+    border-radius: 15px;
     margin: 0 20px;
     padding: 15px;
-  
 }
 
-.image-container{
-    border-radius:8px;
+.image-container {
+    border-radius: 8px;
     margin: 0 50px;
     height: 150px;
 }
 
-li{
-    text-align:left;
-    display:block;
-    line-height:30px;
-    font-size:20px;
-
-    
+li {
+    text-align: left;
+    display: block;
+    line-height: 30px;
+    font-size: 20px;
 }
 
-.stats{
-    width:100%;
-    text-align:left;
+.stats {
+    width: 100%;
+    text-align: left;
 }
 
-.top-container{
-    width:100%;
-    display:block;
+.top-container {
+    width: 100%;
+    display: block;
 }
 
-.img-desc-container{
-    display:inline-block;
-    width:100%;
+.img-desc-container {
+    display: inline-block;
+    width: 100%;
     padding: 10px;
- 
 }
 
-.img-stats-container{
-    width:100%;
-    height:833px;
-    display:inline-block;
+.img-stats-container {
+    width: 100%;
+    height: 833px;
+    display: inline-block;
 }
 
-.evolution-container{
-    display:block;
-    width:100%;
+.evolution-container {
+    display: block;
+    width: 100%;
 }
 
-.desc-container{
-    display:inline-block;
-    width:100%;
-    height:400px;
-    float:none;
-    padding:20px;
+.desc-container {
+    width: 100%;
+    height: 400px;
+    float: none;
+    padding: 20px;
 }
 
-
-table{
-    border:none;
-    width:100%;
-}
-tr,td{
-    width:500px;
+table {
+    border: none;
+    width: 100%;
 }
 
-.desc{
+tr, td {
+    width: 500px;
+}
+
+.desc {
     width: 100%;
     height: 60%;
     text-align: justify;
 }
-.skills{
+
+.skills {
     width: 100%;
     height: 40%;
-    text-align: justify;  
+    text-align: justify;
 }
 
-
-@media only screen and (min-width: 880px){
-    .desc{
-        height:25%;
+@media only screen and (min-width: 880px) {
+    .desc {
+        height: 35%;
     }
-    tr,td{
-        width:320px;
+    tr, td {
+        width: 320px;
     }
-    .img-stats-container{
-        float:left;
-        width:40%;
-    
+    .img-stats-container {
+        float: left;
+        width: 40%;
     }
-    .img-desc-container{
-        padding:50px 200px;
-       
-    
+    .img-desc-container {
+        padding: 50px 200px;
+        padding-bottom: 0;
     }
-    .desc-container{
-        width:calc(60% - 4px);
-        float:right;
-      
+    .desc-container {
+        width: calc(60% - 4px);
+        float: right;
     }
-  
-    li, p{
-        text-align:left;
-        font-size:16px;
-
+    li, p {
+        text-align: left;
+        font-size: 16px;
     }
-    .stats-container{
-        text-align:left;
-  
+    .stats-container {
+        text-align: left;
     }
-    
-    .stats{
+    .stats {
         width: 15%;
-        text-align:left;
-        margin:auto;
-     
+        text-align: left;
+        margin: auto;
     }
-
-    .desc-container{
-        width:calc(70% -4px);
-        height:833px;
-        float:right;
+    #container {
+        width: 25%;
     }
-
-
-    #container{
-        width:25%;
-    }
-
-
-
-  
-  }
+}

@@ -6,13 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./progress-bar.component.css']
 })
 export class ProgressBarComponent implements OnInit {
-@Input() width$;
+  @Input() width$;
   width;
 
   constructor() { }
 
   ngOnInit() {
-    this.width=(this.width$/255)*100;
+    this.width = (this.width$ / 255) * 100;
   }
 
 }
