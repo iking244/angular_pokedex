@@ -25,7 +25,7 @@
       <ng-container *ngFor="let type of pokemonType">
         <div id="type-container" class="{{type.type.name}}">{{type.type.name}}</div>
       </ng-container>
-      <h3>#{{pokemonId.id | number:'3.0-0'}}</h3>
+      <h3>#{{pokemonId | number:'3.0-0'}}</h3>
     </ng-template>
 
   </ng-template>

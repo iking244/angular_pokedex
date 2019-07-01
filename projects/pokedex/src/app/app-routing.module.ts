@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { PokemonSpeciesComponent } from './pokemon-species/pokemon-species.component';
 import { PokemonListComponent } from './pokemonList/pokemon-list/pokemon-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -7,7 +7,7 @@ import { PokemonListByTypeComponent } from './pokemonList/pokemon-list-by-type/p
 import { ItemListComponent } from './pokemonList/item-list/item-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pokemon-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/pokemon-list/', pathMatch: 'full' },
   { path: 'pokemon-list', component: PokemonListComponent },
   { path: 'pokemon/:name', component: PokemonSpeciesComponent },
   { path: 'pokemon-list/pokemon/:type', component: PokemonListByTypeComponent },
