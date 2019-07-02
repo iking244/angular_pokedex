@@ -13,8 +13,8 @@ export class ItemSpriteComponent implements OnInit, OnChanges, OnDestroy {
   subscription: Subscription;
   itemDetails: ItemDetails;
   itemSprites: Sprites;
-  itemDescription;
-  itemEffect;
+  itemDescription: string;
+  itemEffect: string;
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {}

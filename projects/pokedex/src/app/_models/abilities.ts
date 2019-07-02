@@ -1,65 +1,68 @@
-
 export interface Language {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface EffectEntry {
-    effect: string;
-    language: Language;
-    short_effect: string;
+  effect: string;
+  language: Language;
+  short_effect: string;
 }
 
 export interface Language2 {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface VersionGroup {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface FlavorTextEntry {
-    flavor_text: string;
-    language: Language2;
-    version_group: VersionGroup;
+  flavor_text: string;
+  language: Language2;
+  version_group: VersionGroup;
 }
 
 export interface Generation {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface Language3 {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface Name {
-    language: Language3;
-    name: string;
+  language: Language3;
+  name: string;
 }
 
 export interface Pokemon2 {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface Pokemon {
-    is_hidden: boolean;
-    pokemon: Pokemon2;
-    slot: number;
+  is_hidden: boolean;
+  pokemon: Pokemon2;
+  slot: number;
 }
 
-export class Abilities  {
-    effect_changes: any[];
-    effect_entries: EffectEntry[];
-    flavor_text_entries: FlavorTextEntry[];
-    generation: Generation;
-    id: number;
-    is_main_series: boolean;
-    name: string;
-    names: Name[];
-    pokemon: Pokemon[];
+export class Abilities {
+// tslint:disable-next-line: variable-name
+  effect_changes: any[];
+// tslint:disable-next-line: variable-name
+  effect_entries: EffectEntry[];
+// tslint:disable-next-line: variable-name
+  flavor_text_entries: FlavorTextEntry[];
+  generation: Generation;
+  id: number;
+// tslint:disable-next-line: variable-name
+  is_main_series: boolean;
+  name: string;
+  names: Name[];
+  pokemon: Pokemon[];
 }

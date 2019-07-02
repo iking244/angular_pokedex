@@ -70,14 +70,21 @@ export interface Sprites {
 
 export class ItemDetails {
     attributes: Attribute[];
+// tslint:disable-next-line: variable-name
     baby_trigger_for?: any;
     category: Category;
     cost: number;
+// tslint:disable-next-line: variable-name
     effect_entries: EffectEntry[];
+// tslint:disable-next-line: variable-name
     flavor_text_entries: FlavorTextEntry[];
+// tslint:disable-next-line: variable-name
     fling_effect?: any;
+// tslint:disable-next-line: variable-name
     fling_power?: any;
+// tslint:disable-next-line: variable-name
     game_indices: GameIndice[];
+// tslint:disable-next-line: variable-name
     held_by_pokemon: any[];
     id: number;
     machines: any[];
