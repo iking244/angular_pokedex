@@ -3,7 +3,6 @@
     <h2>Evolution Chart:</h2>
     <div class="innerContainer">
       <h3>{{ evolution_data.species.name | titlecase }}</h3>
-      <b *ngIf="evolution_data.evolves_to !== 0">>></b>
 
       <app-pokemon-sprite
         (click)="onSelect(getPokemonId(evolution_data.species.url))"
@@ -12,41 +11,105 @@
       >
       </app-pokemon-sprite>
     </div>
-    <ng-container *ngFor="let FirstEvolve of evolution_data.evolves_to">
-      <div class="innerContainer">
-        <h3>{{ FirstEvolve.species.name | titlecase }}</h3>
-        <b *ngIf="FirstEvolve.evolves_to !== 0">>></b>
-        <app-pokemon-sprite
-          (click)="onSelect(getPokemonId(FirstEvolve.species.url))"
-          [pokemonName]="getPokemonId(FirstEvolve.species.url)"
-          [pokemonUrl]="FirstEvolve.species.url"
-        >
-        </app-pokemon-sprite>
-      </div>
-      <ng-container *ngFor="let SecondEvolve of FirstEvolve.evolves_to">
+    <div class="firsEvolve">
+     
+      <ng-container *ngFor="let FirstEvolve of evolution_data.evolves_to">
         <div class="innerContainer">
-          <h3>{{ SecondEvolve.species.name | titlecase }}</h3>
-          <b *ngIf="SecondEvolve.evolves_to !== 0">>></b>
+            <img class="arrow" src="assets/img/arrow.png" />
+          <h3>{{ FirstEvolve.species.name | titlecase }}</h3>
           <app-pokemon-sprite
-            (click)="onSelect(getPokemonId(SecondEvolve.species.url))"
-            [pokemonName]="getPokemonId(SecondEvolve.species.url)"
-            [pokemonUrl]="SecondEvolve.species.url"
+            (click)="onSelect(getPokemonId(FirstEvolve.species.url))"
+            [pokemonName]="getPokemonId(FirstEvolve.species.url)"
+            [pokemonUrl]="FirstEvolve.species.url"
           >
           </app-pokemon-sprite>
         </div>
-        <ng-container *ngFor="let finalEvolve of SecondEvolve.evolves_to">
-          <div class="innerContainer">
-            <h3>{{ finalEvolve.species.name | titlecase }}</h3>
-            <b *ngIf="finalEvolve.evolves_to === 0">>></b>
-            <app-pokemon-sprite
-              (click)="onSelect(getPokemonId(finalEvolve.species.url))"
-              [pokemonName]="getPokemonId(finalEvolve.species.url)"
-              [pokemonUrl]="finalEvolve.species.url"
-            >
-            </app-pokemon-sprite>
-          </div>
-        </ng-container>
+        <div class='firstEvolve'>
+          <ng-container *ngFor="let SecondEvolve of FirstEvolve.evolves_to">
+            <div class="innerContainer">
+               <img class="arrow" src="assets/img/arrow.png" />
+              <h3>{{ SecondEvolve.species.name | titlecase }}</h3>
+              <app-pokemon-sprite
+                (click)="onSelect(getPokemonId(SecondEvolve.species.url))"
+                [pokemonName]="getPokemonId(SecondEvolve.species.url)"
+                [pokemonUrl]="SecondEvolve.species.url"
+              >
+              </app-pokemon-sprite>
+            </div>
+
+            <ng-container *ngFor="let finalEvolve of SecondEvolve.evolves_to">
+              <div class='firstEvolve'>
+                <img class="arrow" src="assets/img/arrow.png" />
+                <div class="innerContainer">
+                  <h3>{{ finalEvolve.species.name | titlecase }}</h3>
+                  <app-pokemon-sprite
+                    (click)="onSelect(getPokemonId(finalEvolve.species.url))"
+                    [pokemonName]="getPokemonId(finalEvolve.species.url)"
+                    [pokemonUrl]="finalEvolve.species.url"
+                  >
+                  </app-pokemon-sprite>
+                </div>
+                </div>
+             
+            </ng-container>
+          </ng-container>
+        </div>
       </ng-container>
-    </ng-container>
+    </div>
   </div>
 </ng-container>
+
+<div *ngIf="chain">
+  <h2>Evolution Chain</h2>
+
+  <div *ngIf="chain.species">
+    <img
+      [routerLink]="['/details', chain.species.name]"
+      title="{{ chain.species.name | titlecase }}'s Details' Page"
+      *ngIf="chain.species.url"
+      [src]="getImg(chain.species.url)"
+    /><br />
+    <h3>{{ chain.species.name | titlecase }}</h3>
+  </div>
+
+  <div *ngIf="chain.evolves_to.length">
+    <img class="arrow" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-512.png" />
+    <div class="inline" *ngFor="let firstEvolve of chain.evolves_to">
+      <div class="pokemonBox">
+        <img
+          class="inline"
+          [routerLink]="['/details', firstEvolve.species.name]"
+          title="{{ firstEvolve.species.name | titlecase }}'s Details' Page"
+          *ngIf="firstEvolve.species.url"
+          [src]="getImg(firstEvolve.species.url)"
+        /><br />
+        <h3>{{ firstEvolve.species.name | titlecase }}</h3>
+      </div>
+      <br />
+      <div class="inline" *ngFor="let secondEvolve of firstEvolve.evolves_to">
+        <img class="arrow" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-512.png" />
+        <div class="pokemonBox">
+          <img
+            [routerLink]="['/details', secondEvolve.species.name]"
+            title="{{ secondEvolve.species.name | titlecase }}'s Details' Page"
+            *ngIf="secondEvolve.species.url"
+            [src]="getImg(secondEvolve.species.url)"
+          /><br />
+          <h3>{{ secondEvolve.species.name | titlecase }}</h3>
+        </div>
+        <div *ngFor="let thirdEvolve of secondEvolve.evolves_to">
+          <img class="arrow" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-512.png" />
+          <div class="pokemonBox">
+            <img
+              [routerLink]="['/details', thirdEvolve.species.name]"
+              title="{{ thirdEvolve.species.name | titlecase }}'s Details' Page"
+              *ngIf="thirdEvolve.species.url"
+              [src]="getImg(thirdEvolve.species.url)"
+            /><br />
+            <h3>{{ thirdEvolve.species.name | titlecase }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

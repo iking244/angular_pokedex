@@ -1,8 +1,9 @@
 <div class="header">
-  <a href="/pokemon-list/1" class="logo"><img src= "assets/img/pokemon-logo.png"/></a>
+  <img src= "assets/img/pokemon-logo.png"/>
 </div>
 
 <div id="navbar">
-    <a href="/pokemon-list/1">Pokedex</a>
-    <a href="/item-list/1">Items</a>
+    <a href="/pokemon-list/1" [class.active] = "isActive" (click)="isActiveChanger($event)">Pokedex</a>
+    <a href="/item-list/1">Pokemon Items</a>
 </div>
+

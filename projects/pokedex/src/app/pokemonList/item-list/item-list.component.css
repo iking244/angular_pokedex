@@ -59,6 +59,9 @@
     transform: translateY(0);
   }
 }
+.my-pagination /deep/ .ngx-pagination .current {
+  background: rgba(232,174,0,1);
+}
 
 .container {
   border: 1px solid rgba(232, 174, 0, 1);

@@ -16,6 +16,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonId;
   subscription: Subscription;
   pagination: any;
+
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) {
     this.pagination = {
       currentPage: 1,

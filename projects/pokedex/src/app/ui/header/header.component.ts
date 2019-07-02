@@ -12,10 +12,10 @@ export class HeaderComponent implements OnInit {
   subs;
   pokemonTypes = [];
   pokemons = [];
-  private searchTerms = new Subject<string>();
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
+
     window.onscroll = function() { myFunction() };
 
     let navbar = document.getElementById('navbar');
@@ -39,7 +39,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
+
+
+
+
 }

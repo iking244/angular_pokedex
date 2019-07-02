@@ -109,6 +109,9 @@ h2{
   overflow:hidden;
   
 }
+.my-pagination /deep/ .ngx-pagination .current {
+  background: rgba(232,174,0,1);
+}
 
 @media only screen and (min-width: 600px){
  

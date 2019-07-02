@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 img{
-height:55px;
+height:75px;
 }
 .header {
   height:120px;
@@ -83,7 +83,7 @@ height:55px;
 }
 
 #navbar a.active {
-  background-color: #4CAF50;
+  background-color: dodgerblue;
   color: white;
 }
 
