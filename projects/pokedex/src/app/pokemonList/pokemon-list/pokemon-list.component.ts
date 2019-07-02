@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PokemonDetails, Pokemon } from '../../_models/pokemon';
+import { Pokemon } from '../../_models/pokemon';
 import { PokemonService } from '../../pokemon.service';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,36 +15,33 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonTypes = [];
   pokemonId;
   subscription: Subscription;
-  subscription2: Subscription;
-  page = 48;
-  p: string;
-
-  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) { }
+  pagination: any;
+  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute) {
+    this.pagination = {
+      currentPage: 1,
+      itemsPerPage: 48
+    };
+  }
 
   ngOnInit() {
-    this.subscription2 =this.route.queryParamMap.pipe(
-      map(params => params.get('page'))
-    ).subscribe((page => this.p = page));
-
-
-    this.subscription = this.pokemonService.getPokemon().subscribe(
-      (data: Pokemon) => {
+    this.subscription = this.route.params
+      .pipe(
+        switchMap(params => {
+          this.pagination.currentPage = params.page;
+          return this.pokemonService.getPokemon();
+        })
+      )
+      .subscribe((data: Pokemon) => {
         this.pokemons = data.results;
-      }
-    );
+      });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-
   onSelect(id) {
     this.router.navigate(['/pokemon', id]);
-  }
-
-  loadMore() {
-    this.page += 48;
   }
 
   getPokemonId(url) {
@@ -53,8 +50,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   }
 
   pageChange(newPage: number) {
-		this.router.navigate(['/pokemon-list'], { queryParams: { page: newPage } });
-	}
+    this.router.navigate(['/pokemon-list', (this.pagination.currentPage = newPage)]);
+  }
 }
-
-

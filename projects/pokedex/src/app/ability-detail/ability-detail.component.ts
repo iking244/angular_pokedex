@@ -9,25 +9,21 @@ import { Abilities } from '../_models/abilities';
   styleUrls: ['./ability-detail.component.css']
 })
 export class AbilityDetailComponent implements OnInit, OnChanges, OnDestroy {
-@Input() abilityUrl;
+  @Input() abilityUrl;
 
-abilityEffect = [];
+  abilityEffect = [];
   subscription: Subscription;
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
-    this.subscription = this.pokemonService.getAbilityDetails(this.abilityUrl).subscribe(
-      (data: Abilities) => {
-          this.abilityEffect = data.effect_entries;
-      }
-    )
+    this.subscription = this.pokemonService.getAbilityDetails(this.abilityUrl).subscribe((data: Abilities) => {
+      this.abilityEffect = data.effect_entries;
+    });
   }
 
   ngOnDestroy() {
-
+    this.subscription.unsubscribe();
   }
-
 }

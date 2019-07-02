@@ -6,8 +6,6 @@ import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-pokemon-species',
   templateUrl: './pokemon-species.component.html',
@@ -24,40 +22,45 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
   pokemonDescription: string;
   public errorMsg;
 
-  constructor(private location: Location, private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private pokemonService: PokemonService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.route.params.pipe(
-      switchMap((params) => {
-        this.pokemonName = params.name;
-        return this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
-          switchMap((data: PokemonDetails) => {
-            this.pokemonSprite = data.sprites;
-            this.pokemonInfo = data;
-            this.pokemonDetails = data.types;
-            this.pokemonId = data.id;
-            return this.pokemonService.getPokemonDescription(data.species.url.slice(0, data.species.url.length - 1));
-          })
-        );
-      })
-    ).subscribe((data: PokemonSpecies) => {
+    this.subscription = this.route.params
+      .pipe(
+        switchMap(params => {
+          this.pokemonName = params.name;
+          return this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
+            switchMap((data: PokemonDetails) => {
+              this.pokemonSprite = data.sprites;
+              this.pokemonInfo = data;
+              this.pokemonDetails = data.types;
+              this.pokemonId = data.id;
+              return this.pokemonService.getPokemonDescription(data.species.url.slice(0, data.species.url.length - 1));
+            })
+          );
+        })
+      )
+      .subscribe(
+        (data: PokemonSpecies) => {
+          this.pokemonSpecieDetails = data;
 
-      this.pokemonSpecieDetails = data;
-
-      for (const i of data.flavor_text_entries) {
-        if (i.language.name === 'en') {
-          this.pokemonDescription = i.flavor_text;
-          break;
-        }
-      }
-    },
-      error => this.router.navigate(['**']));
-
-
+          for (const i of data.flavor_text_entries) {
+            if (i.language.name === 'en') {
+              this.pokemonDescription = i.flavor_text;
+              break;
+            }
+          }
+        },
+        error => this.router.navigate(['**'])
+      );
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
   }
 
   ngOnChanges() {
@@ -65,8 +68,6 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onSelect(type) {
-    this.router.navigate(['/pokemon-list/pokemon/', type]);
+    this.router.navigate(['/pokemon-list/pokemon/', type, '1']);
   }
-
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { PokemonService } from '../../pokemon.service';
-import { SpriteUrls, PokemonDetails } from '../../_models/pokemon';
+import { SpriteUrls } from '../../_models/pokemon';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,6 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./pokemon-sprite.component.css']
 })
 export class PokemonSpritesComponent implements OnInit, OnChanges, OnDestroy {
-
   @Input() pokemonUrl: string;
   @Input() pokemonName: string;
 
@@ -17,18 +16,21 @@ export class PokemonSpritesComponent implements OnInit, OnChanges, OnDestroy {
   pokemonId: number;
   pokemonType = [];
   subscription;
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges() {
-    this.subscription = this.pokemonService.getPokemonInfo(this.pokemonName).pipe(
-      switchMap((data => {
-        this.pokemonSprites = data.sprites;
-        this.pokemonId = data.id;
-        return this.pokemonService.getPokemonDescription(this.pokemonUrl);
-      })
-      )).subscribe(data => {
+    this.subscription = this.pokemonService
+      .getPokemonInfo(this.pokemonName)
+      .pipe(
+        switchMap(data => {
+          this.pokemonSprites = data.sprites;
+          this.pokemonId = data.id;
+          return this.pokemonService.getPokemonDescription(this.pokemonUrl);
+        })
+      )
+      .subscribe(data => {
         this.pokemonType = data.types;
       });
   }
@@ -36,6 +38,4 @@ export class PokemonSpritesComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
 }

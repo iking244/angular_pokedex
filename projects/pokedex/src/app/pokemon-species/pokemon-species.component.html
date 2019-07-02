@@ -3,48 +3,42 @@
 <app-loading-spinner *ngIf="!pokemonSpecieDetails && !pokemonDescription; else notFound"></app-loading-spinner>
 
 <ng-container *ngIf="pokemonSpecieDetails">
-  <ng-container *ngIf='pokemonSprite'>
-
-    <div class='top-container'>
-
+  <ng-container *ngIf="pokemonSprite">
+    <div class="top-container">
       <app-previous-next-button [pokemonName]="pokemonInfo.name" [pokemonId]="pokemonId"></app-previous-next-button>
-
     </div>
     <div class="img-desc-container">
-      <div class='img-stats-container'>
-        <ng-container *ngIf='pokemonSprite.front_shiny; else elseBlock'>
-          <h2> {{pokemonInfo.name | titlecase}}</h2>
+      <div class="img-stats-container">
+        <ng-container *ngIf="pokemonSprite.front_shiny; else elseBlock">
+          <h2>{{ pokemonInfo.name | titlecase }}</h2>
 
-
-          <div class='image-container'>
-            <img class="specie" [src]=pokemonSprite.front_shiny>
-          </div>
+          <div class="image-container"><img class="specie" [src]="pokemonSprite.front_shiny" /></div>
         </ng-container>
-        <div class='stats-container'>
+        <div class="stats-container">
           <ng-container *ngIf="pokemonInfo">
             <h2>Stats:</h2>
             <table>
               <tbody>
-                <div *ngFor='let p of pokemonInfo.stats'>
+                <div *ngFor="let p of pokemonInfo.stats">
                   <tr>
-                    <td>{{p.stat.name}}: {{p.base_stat}}
-                      <app-progress-bar [width$]='p.base_stat'></app-progress-bar>
+                    <td>
+                      {{ p.stat.name }}: {{ p.base_stat }}
+                      <app-progress-bar [width$]="p.base_stat"></app-progress-bar>
                     </td>
                   </tr>
-                  <p>
-
+                  <p></p>
                 </div>
               </tbody>
             </table>
 
             <ul>
-              <li>Base Happiness: {{pokemonSpecieDetails.base_happiness}}</li>
-              <li>Capture Rate : {{pokemonSpecieDetails.capture_rate}}</li>
+              <li>Base Happiness: {{ pokemonSpecieDetails.base_happiness }}</li>
+              <li>Capture Rate : {{ pokemonSpecieDetails.capture_rate }}</li>
             </ul>
-            <ng-container *ngIf='pokemonInfo'>
+            <ng-container *ngIf="pokemonInfo">
               <ul>
-                <li>Height : {{pokemonInfo.height}} m</li>
-                <li>Weight : {{pokemonInfo.weight}} lbs</li>
+                <li>Height : {{ pokemonInfo.height }} m</li>
+                <li>Weight : {{ pokemonInfo.weight }} lbs</li>
               </ul>
             </ng-container>
           </ng-container>
@@ -54,22 +48,23 @@
       <div class="desc-container">
         <div class="desc">
           <h2>Description</h2>
-          {{pokemonDescription}}
+          {{ pokemonDescription }}
         </div>
 
-
-        <div class='types-container'>
-          <div class='skills'>
+        <div class="types-container">
+          <div class="skills">
             <h2>Types:</h2>
             <ng-container *ngFor="let types of pokemonDetails">
-              <span id='container' (click)=onSelect(types.type.name) class="{{types.type.name}}">
-                {{types.type.name | titlecase}}</span>
+              <span id="container" (click)="onSelect(types.type.name)" class="{{ types.type.name }}">
+                {{ types.type.name | titlecase }}</span
+              >
             </ng-container>
             <h2>Skills:</h2>
-            <div *ngFor='let p of pokemonInfo.abilities'>
+            <div *ngFor="let p of pokemonInfo.abilities">
               <ul>
-                <li>{{p.ability.name | titlecase}}<br>
-                  <app-ability-detail [abilityUrl]='p.ability.url'></app-ability-detail>
+                <li>
+                  {{ p.ability.name | titlecase }}<br />
+                  <app-ability-detail [abilityUrl]="p.ability.url"></app-ability-detail>
                 </li>
               </ul>
             </div>
@@ -79,38 +74,22 @@
     </div>
   </ng-container>
 
-
-
   <div class="evolution-container">
-    <app-evolution-chain [specieUrl]='pokemonSpecieDetails.evolution_chain.url'></app-evolution-chain>
+    <app-evolution-chain [specieUrl]="pokemonSpecieDetails.evolution_chain.url"></app-evolution-chain>
   </div>
-
-
-
 </ng-container>
 
-
-
-<ng-template #notFound>
-  {{errorMsg}}
-</ng-template>
+<ng-template #notFound> {{ errorMsg }} </ng-template>
 
 <ng-template #elseBlock>
-
-  <ng-container *ngIf='pokemonSprite.front_default; else elseBlock2'>
-    <h2> {{pokemonInfo.name | titlecase}}</h2>
-    <div class='image-container'>
-      <img class="specie" [src]=pokemonSprite.front_default>
-    </div>
+  <ng-container *ngIf="pokemonSprite.front_default; else elseBlock2">
+    <h2>{{ pokemonInfo.name | titlecase }}</h2>
+    <div class="image-container"><img class="specie" [src]="pokemonSprite.front_default" /></div>
   </ng-container>
   <ng-template #elseBlock2>
-    <h2> {{pokemonInfo.name | titlecase}}</h2>
-    <img class='default' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" />
+    <h2>{{ pokemonInfo.name | titlecase }}</h2>
+    <img class="default" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" />
   </ng-template>
-
 </ng-template>
 
-
-<ng-template #elseBlocks>
-  <button class="active" (click)="goPrevious()">Previous Pokemon</button>
-</ng-template>
+<ng-template #elseBlocks> <button class="active" (click)="goPrevious()">Previous Pokemon</button> </ng-template>

@@ -1,13 +1,13 @@
 <app-header></app-header>
-<div class='container' *ngFor='let pokemon of pokemons | paginate: {itemsPerPage:page, currentPage:p}'
-  (click)=onSelect(getPokemonId(pokemon.url)) title='{{pokemon.name | titlecase }} details'>
-  <h4 style="cursor: text;">{{pokemon.name | uppercase }}</h4>
+<div
+  class="container"
+  *ngFor="let pokemon of (pokemons | paginate: pagination)"
+  (click)="onSelect(getPokemonId(pokemon.url))"
+  title="{{ pokemon.name | titlecase }} details"
+>
+  <h4 style="cursor: text;">{{ pokemon.name | uppercase }}</h4>
 
-  <app-pokemon-sprite [pokemonUrl]='pokemon.url' [pokemonName]='pokemon.name'></app-pokemon-sprite>
+  <app-pokemon-sprite [pokemonUrl]="pokemon.url" [pokemonName]="pokemon.name"></app-pokemon-sprite>
 </div>
 
-
-
-<div class="footer">
-  <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
-</div>
+<div class="footer"><pagination-controls (pageChange)="pageChange($event)"></pagination-controls></div>

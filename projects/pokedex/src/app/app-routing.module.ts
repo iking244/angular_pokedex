@@ -7,11 +7,11 @@ import { PokemonListByTypeComponent } from './pokemonList/pokemon-list-by-type/p
 import { ItemListComponent } from './pokemonList/item-list/item-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pokemon-list/', pathMatch: 'full' },
-  { path: 'pokemon-list', component: PokemonListComponent },
+  { path: '', redirectTo: '/pokemon-list/1', pathMatch: 'full' },
+  { path: 'pokemon-list/:page', component: PokemonListComponent },
   { path: 'pokemon/:name', component: PokemonSpeciesComponent },
-  { path: 'pokemon-list/pokemon/:type', component: PokemonListByTypeComponent },
-  { path: 'item-list', component: ItemListComponent },
+  { path: 'pokemon-list/pokemon/:type/:page', component: PokemonListByTypeComponent },
+  { path: 'item-list/:page', component: ItemListComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];

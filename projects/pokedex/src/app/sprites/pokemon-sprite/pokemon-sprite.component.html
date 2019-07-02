@@ -1,32 +1,29 @@
 <app-loading-spinner *ngIf="!pokemonSprites && !pokemonType"></app-loading-spinner>
-<ng-container *ngIf='pokemonSprites'>
+<ng-container *ngIf="pokemonSprites">
   <ng-container *ngIf="pokemonSprites.front_shiny; else elseBlock">
-    <img [src]='pokemonSprites.front_shiny' />
+    <img [src]="pokemonSprites.front_shiny" />
 
     <ng-container *ngFor="let type of pokemonType">
-      <div id="type-container" class="{{type.type.name}}">{{type.type.name}}</div>
+      <div id="type-container" class="{{ type.type.name }}">{{ type.type.name }}</div>
     </ng-container>
-    <h3>#{{pokemonId | number:'3.0-0'}}</h3>
+    <h3>#{{ pokemonId | number: "3.0-0" }}</h3>
   </ng-container>
 
   <ng-template #elseBlock>
-
-    <ng-container *ngIf="pokemonSprites.front_default ; else elseBlock2">
-      <img [src]='pokemonSprites.front_default' />
+    <ng-container *ngIf="pokemonSprites.front_default; else elseBlock2">
+      <img [src]="pokemonSprites.front_default" />
       <ng-container *ngFor="let type of pokemonType">
-        <div id="type-container" class="{{type.type.name}}">{{type.type.name}}</div>
+        <div id="type-container" class="{{ type.type.name }}">{{ type.type.name }}</div>
       </ng-container>
-      <h3>#{{pokemonId | number:'3.0-0'}}</h3>
-
+      <h3>#{{ pokemonId | number: "3.0-0" }}</h3>
     </ng-container>
 
     <ng-template #elseBlock2>
-      <img class='default' src="assets/img/Pokeball.png" />
+      <img class="default" src="assets/img/Pokeball.png" />
       <ng-container *ngFor="let type of pokemonType">
-        <div id="type-container" class="{{type.type.name}}">{{type.type.name}}</div>
+        <div id="type-container" class="{{ type.type.name }}">{{ type.type.name }}</div>
       </ng-container>
-      <h3>#{{pokemonId | number:'3.0-0'}}</h3>
+      <h3>#{{ pokemonId | number: "3.0-0" }}</h3>
     </ng-template>
-
   </ng-template>
 </ng-container>

@@ -74,7 +74,9 @@
   font-family: sans-serif;
 }
 
-.container:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
+.container:hover,
+.hvr-wobble-vertical:focus,
+.hvr-wobble-vertical:active {
   -webkit-animation-name: hvr-wobble-vertical;
   animation-name: hvr-wobble-vertical;
   -webkit-animation-duration: 1s;

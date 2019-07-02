@@ -1,11 +1,10 @@
-<app-loading-spinner *ngIf=!itemSprites></app-loading-spinner>
-<ng-container *ngIf='itemDetails'>
+<app-loading-spinner *ngIf="!itemSprites"></app-loading-spinner>
+<ng-container *ngIf="itemDetails">
   <ng-container *ngIf="itemSprites.default; else elseBlock">
-    <div><img title="{{itemEffect}}" [src]='itemSprites.default' /></div>
+    <div><img title="{{ itemEffect }}" [src]="itemSprites.default" /></div>
   </ng-container>
-  <div class='text-container'>{{itemDescription}}</div>
-
+  <div class="text-container">{{ itemDescription }}</div>
 </ng-container>
 <ng-template #elseBlock>
-  <div><img title="{{itemEffect}}" src="assets/img/Pokeball.png" /></div>
+  <div><img title="{{ itemEffect }}" src="assets/img/Pokeball.png" /></div>
 </ng-template>
