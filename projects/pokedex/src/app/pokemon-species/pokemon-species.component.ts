@@ -27,7 +27,7 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.subscription = this.route.params
@@ -40,7 +40,8 @@ export class PokemonSpeciesComponent implements OnInit, OnDestroy, OnChanges {
               this.pokemonInfo = data;
               this.pokemonDetails = data.types;
               this.pokemonId = data.id;
-              return this.pokemonService.getPokemonDescription(data.species.url.slice(0, data.species.url.length - 1));
+              return this.pokemonService.getPokemonDescription(
+              data.species.url.slice(0, data.species.url.length - 1));
             })
           );
         })
