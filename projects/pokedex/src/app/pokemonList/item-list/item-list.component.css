@@ -1,9 +1,7 @@
 * {
-
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 
 @-webkit-keyframes hvr-wobble-vertical {
@@ -59,8 +57,9 @@
     transform: translateY(0);
   }
 }
+
 .my-pagination /deep/ .ngx-pagination .current {
-  background: rgba(232,174,0,1);
+  background: rgba(232, 174, 0, 1);
 }
 
 .container {
@@ -79,9 +78,7 @@
   font-family: sans-serif;
 }
 
-.container:hover,
-.hvr-wobble-vertical:focus,
-.hvr-wobble-vertical:active {
+.container:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
   -webkit-animation-name: hvr-wobble-vertical;
   animation-name: hvr-wobble-vertical;
   -webkit-animation-duration: 1s;
@@ -146,17 +143,12 @@ h2 {
 
 @media only screen and (max-width: 685px) {
   .container {
-    display: inline-block;
-    vertical-align: middle;
-    display: inline-block;
-    margin: 0 25px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    height: 250px;
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
     width: 85%;
-    text-align: center;
-    font-size: 90%;
-    font-family: sans-serif;
   }
 }

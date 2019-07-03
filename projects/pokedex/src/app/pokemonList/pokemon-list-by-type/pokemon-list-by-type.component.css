@@ -1,7 +1,7 @@
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @-webkit-keyframes hvr-wobble-vertical {
@@ -30,6 +30,7 @@
     transform: translateY(0);
   }
 }
+
 @keyframes hvr-wobble-vertical {
   16.65% {
     -webkit-transform: translateY(8px);
@@ -56,22 +57,24 @@
     transform: translateY(0);
   }
 }
+
 .container {
-  cursor:pointer;
-  border: 1px solid rgba(232,174,0,1);
+  cursor: pointer;
+  border: 1px solid rgba(232, 174, 0, 1);
   display: inline-block;
   vertical-align: middle;
-  display:inline-block;
+  display: inline-block;
   margin: 0 25px;
-  margin-top:10px;
-  margin-bottom:15px;
+  margin-top: 10px;
+  margin-bottom: 15px;
   border-radius: 5px;
-  height:250px;
-  width:85%;
+  height: 250px;
+  width: 85%;
   text-align: center;
-  font-size:90%;
+  font-size: 90%;
   font-family: sans-serif;
 }
+
 .container:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
   -webkit-animation-name: hvr-wobble-vertical;
   animation-name: hvr-wobble-vertical;
@@ -84,8 +87,8 @@
 }
 
 .footer {
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -93,85 +96,60 @@
   text-align: center;
 }
 
-
-button{
-padding: 15px;
+button {
+  padding: 15px;
 }
 
-h2{
-  font-size:120%;
+h2 {
+  font-size: 120%;
 }
 
-.text-container{
-  font-size:14px;
+.text-container {
+  font-size: 14px;
   display: inline-block;
-  height:120px;
-  overflow:hidden;
-  
+  height: 120px;
+  overflow: hidden;
 }
+
 .my-pagination /deep/ .ngx-pagination .current {
-  background: rgba(232,174,0,1);
+  background: rgba(232, 174, 0, 1);
 }
 
-@media only screen and (min-width: 600px){
- 
-  .container{
-    width:15%;
-    height:100%;
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 15%;
+    height: 100%;
     margin: 5px 10px;
-    margin-top:10px;
+    margin-top: 10px;
   }
-
 }
 
-@media only screen and (max-width: 1215px){
-  .container{
-    
-    width:18%;
-   
+@media only screen and (max-width: 1215px) {
+  .container {
+    width: 18%;
   }
-
 }
-@media only screen and (max-width: 1118px){
-  .container{
-    
-    width:23%;
-   
+
+@media only screen and (max-width: 1118px) {
+  .container {
+    width: 23%;
   }
-
 }
-@media only screen and (max-width: 1016px){
 
-  .container{
-    
-    width:22%;
-   
+@media only screen and (max-width: 1016px) {
+  .container {
+    width: 22%;
   }
-
 }
 
-
-@media only screen and (max-width: 685px){
-
-
-    
-    .container {
-      display: inline-block;
-      vertical-align: middle;
-      display:inline-block;
-      margin: 0 25px;
-      margin-top:10px;
-      margin-bottom:15px;
-      border-radius: 5px;
-      height:250px;
-      width:85%;
-      text-align: center;
-      font-size:90%;
-      font-family: sans-serif;
-      
-    }
-   
-  
-
+@media only screen and (max-width: 685px) {
+  .container {
+    width: 45%;
+  }
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 85%;
+  }
+}
