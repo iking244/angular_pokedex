@@ -8,15 +8,19 @@
   width: 100%;
   height: 100%;
   display: inline-block;
-  margin: 12px;
-  margin-bottom: 16px;
+  margin: 16px;
   text-align: center;
+}
+.inline{
+  display:inline-block;
+  vertical-align: top;
 }
 
 .firstEvolve{
   display: inline-block;
   vertical-align: top;
   width:100%;
+  border: 1px solid black;
 
 }
 img.arrow {

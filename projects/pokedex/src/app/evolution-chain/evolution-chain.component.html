@@ -4,58 +4,45 @@
     <div class="innerContainer">
       <h3>{{ evolution_data.species.name | titlecase }}</h3>
 
-      <app-pokemon-sprite
-        (click)="onSelect(getPokemonId(evolution_data.species.url))"
-        [pokemonName]="getPokemonId(evolution_data.species.url)"
-        [pokemonUrl]="evolution_data.species.url"
-      >
+      <app-pokemon-sprite (click)="onSelect(getPokemonId(evolution_data.species.url))"
+        [pokemonName]="getPokemonId(evolution_data.species.url)" [pokemonUrl]="evolution_data.species.url">
       </app-pokemon-sprite>
     </div>
     <div class="firsEvolve">
-     
+      <img *ngIf="evolution_data.evolves_to.length" class="arrow" src="assets/img/arrow.png" />
       <ng-container *ngFor="let FirstEvolve of evolution_data.evolves_to">
         <div class="innerContainer">
-            <img class="arrow" src="assets/img/arrow.png" />
           <h3>{{ FirstEvolve.species.name | titlecase }}</h3>
-          <app-pokemon-sprite
-            (click)="onSelect(getPokemonId(FirstEvolve.species.url))"
-            [pokemonName]="getPokemonId(FirstEvolve.species.url)"
-            [pokemonUrl]="FirstEvolve.species.url"
-          >
+          <app-pokemon-sprite (click)="onSelect(getPokemonId(FirstEvolve.species.url))"
+            [pokemonName]="getPokemonId(FirstEvolve.species.url)" [pokemonUrl]="FirstEvolve.species.url">
           </app-pokemon-sprite>
         </div>
-        <div class='firstEvolve'>
+        <div *ngIf="FirstEvolve.evolves_to.length">
           <ng-container *ngFor="let SecondEvolve of FirstEvolve.evolves_to">
+            <div class='inline'>
             <div class="innerContainer">
-               <img class="arrow" src="assets/img/arrow.png" />
+              <img class="arrow" src="assets/img/arrow.png" />
               <h3>{{ SecondEvolve.species.name | titlecase }}</h3>
-              <app-pokemon-sprite
-                (click)="onSelect(getPokemonId(SecondEvolve.species.url))"
-                [pokemonName]="getPokemonId(SecondEvolve.species.url)"
-                [pokemonUrl]="SecondEvolve.species.url"
-              >
+              <app-pokemon-sprite (click)="onSelect(getPokemonId(SecondEvolve.species.url))"
+                [pokemonName]="getPokemonId(SecondEvolve.species.url)" [pokemonUrl]="SecondEvolve.species.url">
               </app-pokemon-sprite>
             </div>
-
+          
             <ng-container *ngFor="let finalEvolve of SecondEvolve.evolves_to">
-              <div class='firstEvolve'>
                 <img class="arrow" src="assets/img/arrow.png" />
                 <div class="innerContainer">
                   <h3>{{ finalEvolve.species.name | titlecase }}</h3>
-                  <app-pokemon-sprite
-                    (click)="onSelect(getPokemonId(finalEvolve.species.url))"
-                    [pokemonName]="getPokemonId(finalEvolve.species.url)"
-                    [pokemonUrl]="finalEvolve.species.url"
-                  >
+                  <app-pokemon-sprite (click)="onSelect(getPokemonId(finalEvolve.species.url))"
+                    [pokemonName]="getPokemonId(finalEvolve.species.url)" [pokemonUrl]="finalEvolve.species.url">
                   </app-pokemon-sprite>
-                </div>
-                </div>
              
+              </div>
+
             </ng-container>
+          </div>
           </ng-container>
         </div>
       </ng-container>
     </div>
   </div>
 </ng-container>
-
